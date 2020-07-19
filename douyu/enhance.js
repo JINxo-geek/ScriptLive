@@ -3,8 +3,8 @@
 // @name         DouyuEx-斗鱼直播间增强插件
 // @namespace    https://github.com/qianjiachun
 // @icon         https://s2.ax1x.com/2020/01/12/loQI3V.png
-// @version      2020.06.22.01
-// @description  弹幕自动变色防检测循环发送 一键续牌 查看真实人数/查看主播数据 已播时长 一键签到(直播间/车队/鱼吧/客户端) 一键领取鱼粮(宝箱/气泡/任务) 一键寻宝 送出指定数量的礼物 一键清空背包 屏蔽广告 调节弹幕大小 自动更新 同屏画中画/多直播间小窗观看/可在斗鱼看多个平台直播(b站) 获取真实直播流地址 自动抢礼物红包 背包信息扩展 简洁模式 夜间模式 开播提醒 幻神模式 关键词回复 关键词禁言 自动谢礼物 自动抢宝箱 弹幕右键信息扩展
+// @version      2020.07.18.02
+// @description  弹幕自动变色防检测循环发送 一键续牌 查看真实人数/查看主播数据 已播时长 一键签到(直播间/车队/鱼吧/客户端) 一键领取鱼粮(宝箱/气泡/任务) 一键寻宝 送出指定数量的礼物 一键清空背包 屏蔽广告 调节弹幕大小 自动更新 同屏画中画/多直播间小窗观看/可在斗鱼看多个平台直播(b站) 获取真实直播流地址 自动抢礼物红包 背包信息扩展 简洁模式 夜间模式 开播提醒 幻神模式 关键词回复 关键词禁言 自动谢礼物 自动抢宝箱 弹幕右键信息扩展 防止下播自动跳转
 // @author       小淳
 // @match			*://*.douyu.com/0*
 // @match			*://*.douyu.com/1*
@@ -62,41 +62,13 @@ function initTimer() {
 function initStyles() {
 	let style = document.createElement("style");
 	style.appendChild(document.createTextNode(`
-.bag-info {    position: absolute;    background-color: rgba(0, 0, 0, 0.6);    color: white;    width: 20px;    font-weight: 800;    height: 20px;    text-align: center;}.bag-button {    position: relative;    color: rgb(255, 255, 255);    text-align: center;    height: 15px;    line-height: 15px;    cursor: pointer;    margin-left: 5px;    background: rgb(70, 171, 255);    border-radius: 9px;    padding: 0px 10px;    float: right;    right: 20px;}.bloop {	background-color: rgba(255,255,255,0.9);	width: 100%;	height: 200px;	position: relative;	bottom: 200px;	display: none;}.bloop__switch {	position: absolute;	right: 0;	bottom: 0;}.bloop__mode {	display: inline-block;}.barragePanel__funcPanel {    position: absolute;    width: 232px;    height: 270px;    display: block;    background: white;    overflow-y: scroll;}.barragePanel__funcPanel::-webkit-scrollbar {display:none}.barragePanel__muteTime {    position: absolute;    left: 25px;    top: 123px;    z-index: 5;}#copy-real-live {    cursor: pointer;}.ex-icon {	display: inline-block;	vertical-align: middle;	margin-right: 8px;}.extool {	background-color: rgba(255,255,255,0.9);	width: 100%;	height: 200px;	position: relative;	bottom: 200px;	display: none;}.extool__switch {	position: absolute;	right: 0;	bottom: 0;}.extool__bsize,.extool__sendgift {	margin-bottom: 5px;}.extool__redpacket_room,.extool__gold {	display: inline-block;}.ex_giftAnimation {	width: 100%;	height: 100%;	position: absolute;	z-index: 50;	pointer-events: none;}.ex-panel {	width: 550px;	height: 50px;	position: absolute;	bottom: 35px;	right: 50px;	background-color: rgba(255,255,255,0.9);	display: none;	border: 2px rgb(234,173,26) solid;	z-index: 7777;}.ex-panel__wrap {	display: flex;	align-items: center;	justify-content: center;	width: 100%;	height: 100%;}.ex-panel__icon {	margin: 0 10px;	display: block;	position: relative;	padding: 5px;}.ex-panel__tip {	display:none;	background:#f00;	border-radius:50%;	width:8px;	height:8px;	top:0px;	right:0px;	position:absolute;}.gift__panel {    width: 100%;    display: none;    margin-top: 4px;}#gift__title {    cursor: pointer;}#gift__select {    width: 190px;}.gift__option {    margin-top: 5px;}#gift__giftId {    width: 40px;}#gift__reply {    width: 150px;}.livetool {	background-color: rgba(255,255,255,0.9);	width: 100%;	height: 200px;	position: relative;	bottom: 200px;	display: none;}.livetool__cell {	position: relative;    display: -webkit-box;    display: -webkit-flex;    display: flex;    box-sizing: border-box;    width: 100%;    padding: 10px 16px;    overflow: hidden;    color: #323233;    font-size: 14px;    line-height: 24px;	background-color: #fff;	border-bottom: 1px solid rgba(0,0,0,0.2);	flex-wrap: wrap;    -webkit-flex-wrap: wrap;}.livetool__cell_title {	flex: 1;    -webkit-box-flex: 1;}.livetool__cell_option {	flex: 1;	-webkit-box-flex: 1;	text-align: right;}.livetool__cell_switch {	float: right;}.mute__panel {    width: 100%;    display: none;    margin-top: 4px;}#mute__title {    cursor: pointer;}#mute__idlist {    cursor: pointer;    color: royalblue;    margin-left: 10px;}#mute__select {    width: 110px;}.mute__option {    margin-top: 5px;}#mute__word {    width: 70px;}#mute__count {    width: 30px;}#mute__time {    width: 65px;}.reply__panel {    width: 100%;    display: none;    margin-top: 4px;}#reply__title {    cursor: pointer;}#reply__select {    width: 190px;}.reply__option {    margin-top: 5px;}#reply__word {    width: 70px;}#reply__reply {    width: 147px;}.livetool__Treasure {    width: 100%;    position: relative;    z-index: 999;}.videoDiv {    width: 400px;    height: 200px;    background-color: rgba(255, 255, 255, 0);    position: absolute;    z-index: 7777;}.videoPlayer {    width: 100%;    height: 100%;    cursor: move;}.videoScale {    width: 10px;    height: 10px;    overflow: hidden;    cursor: se-resize;    position: absolute;    right: 0;    bottom: 0;    background-color: rgb(231, 57, 57);}.videoInfo {    width: 100%;    height: 30px;    background-color: gray;    position: absolute;    top: -30px;    line-height: 30px;}.videoClose {    width: 30px;    float: right;    color: white;}.videoQn, .videoCDN {    margin-left: 5px;}.videoRID {    margin: 0px 5px;    font-weight: 800;    font-size: medium;}#popup-player__prompt {    display: none;}.postbird-box-container{width:100%;height:100%;overflow:hidden;position:fixed;top:0;left:0;z-index:9999;display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.postbird-box-container.active{display:block}.postbird-box-content{width:400px;max-width:90%;min-height:170px;background-color:#fff;border:solid 1px #dfdfdf;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);margin-top:-100px}.postbird-box-header{width:100%;padding:10px 15px;position:relative;font-size:1.1em;letter-spacing:2px}.postbird-box-close-btn{cursor:pointer;font-weight:700;color:#000;float:right;opacity:.5;font-size:1.3em;margin-top:-3px;display:none}.postbird-box-close-btn:hover{opacity:1}.postbird-box-text{box-sizing: border-box;width:100%;padding:0 10%;text-align:center;line-height:40px;font-size:20px;letter-spacing:1px}.postbird-box-footer{width:100%;position:absolute;bottom:0;padding:0;margin:0;display:flex;display:-webkit-flex;justify-content:space-around;border-top:solid 1px #dfdfdf;align-items:flex-end}.postbird-box-footer .btn-footer{line-height:44px;border:0;cursor:pointer;background-color:#fff;color:#0e90d2;font-size:1.1em;letter-spacing:2px;transition:background-color .5s;-webkit-transition:background-color .5s;-o-transition:background-color .5s;-moz-transition:background-color .5s;outline:0}.postbird-box-footer .btn-footer:hover{background-color:#e5e5e5}.postbird-box-footer .btn-block-footer{width:100%}.postbird-box-footer .btn-left-footer,.postbird-box-footer .btn-right-footer{position:relative;width:100%}.postbird-box-footer .btn-left-footer::after{content:"";position:absolute;right:0;top:0;background-color:#e5e5e5;height:100%;width:1px}.postbird-box-footer .btn-footer-cancel{color:#333}.postbird-prompt-input{width:100%;padding:5px;font-size:16px;border:1px solid #ccc;outline:0}.real-audience {    cursor: pointer;}#refresh-video {    float: left;    width: 24px;    height: 24px;    margin-right: 20px;    cursor: pointer;    background-size: contain;}.refresh-barrage {    display: inline-block;    vertical-align: top;    margin: 0 2px;    padding: 0 8px;    height: 22px;    line-height: 21px;    background-color: #fff;    border: 1px solid #e5e4e4;    -webkit-border-radius: 4px;    -moz-border-radius: 4px;    border-radius: 4px;    cursor: pointer;}#refresh-barrage__svg {    vertical-align: middle;}/*    Notice.css*/.noticejs-top{top:0;width:100%!important}.noticejs-top .item{border-radius:0!important;margin:0!important}.noticejs-topRight{top:10px;right:10px}.noticejs-topLeft{top:10px;left:10px}.noticejs-topCenter{top:10px;left:50%;transform:translate(-50%)}.noticejs-middleLeft,.noticejs-middleRight{right:10px;top:50%;transform:translateY(-50%)}.noticejs-middleLeft{left:10px}.noticejs-middleCenter{top:50%;left:50%;transform:translate(-50%,-50%)}.noticejs-bottom{bottom:0;width:100%!important}.noticejs-bottom .item{border-radius:0!important;margin:0!important}.noticejs-bottomRight{bottom:10px;right:10px}.noticejs-bottomLeft{bottom:10px;left:10px}.noticejs-bottomCenter{bottom:10px;left:50%;transform:translate(-50%)}.noticejs{font-family:Helvetica Neue,Helvetica,Arial,sans-serif}.noticejs .item{margin:0 0 10px;border-radius:3px;overflow:hidden}.noticejs .item .close{float:right;font-size:18px;font-weight:700;line-height:1;color:#fff;text-shadow:0 1px 0 #fff;opacity:1;margin-right:7px}.noticejs .item .close:hover{opacity:.5;color:#000}.noticejs .item a{color:#fff;border-bottom:1px dashed #fff}.noticejs .item a,.noticejs .item a:hover{text-decoration:none}.noticejs .success{background-color:#64ce83}.noticejs .success .noticejs-heading{background-color:#3da95c;color:#fff;padding:10px}.noticejs .success .noticejs-body{color:#fff;padding:10px}.noticejs .success .noticejs-body:hover{visibility:visible!important}.noticejs .success .noticejs-content{visibility:visible}.noticejs .info{background-color:#3ea2ff}.noticejs .info .noticejs-heading{background-color:#067cea;color:#fff;padding:10px}.noticejs .info .noticejs-body{color:#fff;padding:10px}.noticejs .info .noticejs-body:hover{visibility:visible!important}.noticejs .info .noticejs-content{visibility:visible}.noticejs .warning{background-color:#ff7f48}.noticejs .warning .noticejs-heading{background-color:#f44e06;color:#fff;padding:10px}.noticejs .warning .noticejs-body{color:#fff;padding:10px}.noticejs .warning .noticejs-body:hover{visibility:visible!important}.noticejs .warning .noticejs-content{visibility:visible}.noticejs .error{background-color:#e74c3c}.noticejs .error .noticejs-heading{background-color:#ba2c1d;color:#fff;padding:10px}.noticejs .error .noticejs-body{color:#fff;padding:10px}.noticejs .error .noticejs-body:hover{visibility:visible!important}.noticejs .error .noticejs-content{visibility:visible}.noticejs .progressbar{width:100%}.noticejs .progressbar .bar{width:1%;height:30px;background-color:#4caf50}.noticejs .success .noticejs-progressbar{width:100%;background-color:#64ce83;margin-top:-1px}.noticejs .success .noticejs-progressbar .noticejs-bar{width:100%;height:5px;background:#3da95c}.noticejs .info .noticejs-progressbar{width:100%;background-color:#3ea2ff;margin-top:-1px}.noticejs .info .noticejs-progressbar .noticejs-bar{width:100%;height:5px;background:#067cea}.noticejs .warning .noticejs-progressbar{width:100%;background-color:#ff7f48;margin-top:-1px}.noticejs .warning .noticejs-progressbar .noticejs-bar{width:100%;height:5px;background:#f44e06}.noticejs .error .noticejs-progressbar{width:100%;background-color:#e74c3c;margin-top:-1px}.noticejs .error .noticejs-progressbar .noticejs-bar{width:100%;height:5px;background:#ba2c1d}@keyframes noticejs-fadeOut{0%{opacity:1}to{opacity:0}}.noticejs-fadeOut{animation-name:noticejs-fadeOut}@keyframes noticejs-modal-in{to{opacity:.3}}@keyframes noticejs-modal-out{to{opacity:0}}.noticejs-rtl .noticejs-heading{direction:rtl}.noticejs-rtl .close{float:left!important;margin-left:7px;margin-right:0!important}.noticejs-rtl .noticejs-content{direction:rtl}.noticejs{position:fixed;z-index:10050;width:320px}.noticejs ::-webkit-scrollbar{width:8px}.noticejs ::-webkit-scrollbar-button{width:8px;height:5px}.noticejs ::-webkit-scrollbar-track{border-radius:10px}.noticejs ::-webkit-scrollbar-thumb{background:hsla(0,0%,100%,.5);border-radius:10px}.noticejs ::-webkit-scrollbar-thumb:hover{background:#fff}.noticejs-modal{position:fixed;width:100%;height:100%;background-color:#000;z-index:10000;opacity:.3;left:0;top:0}.noticejs-modal-open{opacity:0;animation:noticejs-modal-in .3s ease-out}.noticejs-modal-close{animation:noticejs-modal-out .3s ease-out;animation-fill-mode:forwards}.onoffswitch {    position: relative; width: 45px;    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;}.onoffswitch-checkbox {    position: absolute;    opacity: 0;    pointer-events: none;}.onoffswitch-label {    display: block; overflow: hidden; cursor: pointer;    height: 20px; padding: 0; line-height: 20px;    border: 2px solid #E3E3E3; border-radius: 20px;    background-color: #FFFFFF;    transition: background-color 0.3s ease-in;}.onoffswitch-label:before {    content: "";    display: block; width: 20px; margin: 0px;    background: #FFFFFF;    position: absolute; top: 0; bottom: 0;    right: 23px;    border: 2px solid #E3E3E3; border-radius: 20px;    transition: all 0.3s ease-in 0s; }.onoffswitch-checkbox:checked + .onoffswitch-label {    background-color: #3AAD38;}.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {   border-color: #3AAD38;}.onoffswitch-checkbox:checked + .onoffswitch-label:before {    right: 0px; }.layui-timeline {    padding-left: 5px;}.layui-timeline-item {    position: relative;    padding-bottom: 20px;}li {    list-style: none;}.layui-timeline-item:first-child::before {    display: block;}.layui-timeline-item:last-child::before {    content: '';    position: absolute;    left: 5px;    top: 0;    z-index: 0;    width: 0;    height: 100%;}.layui-timeline-item::before {    content: '';    position: absolute;    left: 5px;    top: 0;    z-index: 0;    width: 1px;    height: 100%;}.layui-timeline-item::before,hr {    background-color: #e6e6e6;}.layui-timeline-axis {    position: absolute;    left: -5px;    top: 0;    z-index: 10;    width: 20px;    height: 20px;    line-height: 20px;    background-color: #fff;    color: #5FB878;    border-radius: 50%;    text-align: center;    cursor: pointer;}.layui-icon {    font-family: layui-icon !important;    font-size: 16px;    font-style: normal;}.layui-timeline-content {    padding-left: 25px;}.layui-text {    line-height: 22px;    font-size: 14px;    color: rgb(85,85,85);}.layui-timeline-title {    position: relative;}
+.bag-info {    position: absolute;    background-color: rgba(0, 0, 0, 0.6);    color: white;    width: 20px;    font-weight: 800;    height: 20px;    text-align: center;}.bag-button {    position: relative;    color: rgb(255, 255, 255);    text-align: center;    height: 15px;    line-height: 15px;    cursor: pointer;    margin-left: 5px;    background: rgb(70, 171, 255);    border-radius: 9px;    padding: 0px 10px;    float: right;    right: 20px;}.bloop {	background-color: rgba(255,255,255,0.9);	width: 100%;	height: 200px;	position: relative;	bottom: 200px;	display: none;}.bloop__switch {	position: absolute;	right: 0;	bottom: 0;}.bloop__mode {	display: inline-block;}.barragePanel__funcPanel {    position: absolute;    width: 232px;    height: 270px;    display: block;    background: white;    overflow-y: scroll;}.barragePanel__funcPanel::-webkit-scrollbar {display:none}.barragePanel__muteTime {    position: absolute;    left: 25px;    top: 123px;    z-index: 5;}#copy-real-live {    cursor: pointer;}.ex-icon {	display: inline-block;	vertical-align: middle;	margin-right: 8px;	-moz-user-select:none; /*火狐*/    -webkit-user-select:none; /*webkit浏览器*/    -ms-user-select:none; /*IE10*/    -khtml-user-select:none; /*早期浏览器*/    user-select:none;}.extool {	background-color: rgba(255,255,255,0.9);	width: 100%;	height: 200px;	position: relative;	bottom: 200px;	display: none;}.extool__switch {	position: absolute;	right: 0;	bottom: 0;}.extool__bsize,.extool__sendgift {	margin-bottom: 5px;}.extool__redpacket_room,.extool__gold {	display: inline-block;}.ex_giftAnimation {	width: 100%;	height: 100%;	position: absolute;	z-index: 50;	pointer-events: none;}.ex-panel {	width: 550px;	height: 50px;	position: absolute;	bottom: 35px;	right: 50px;	background-color: rgba(255,255,255,0.9);	display: none;	border: 2px rgb(234,173,26) solid;	z-index: 7777;}.ex-panel__wrap {	display: flex;	align-items: center;	justify-content: center;	width: 100%;	height: 100%;}.ex-panel__icon {	margin: 0 10px;	display: block;	position: relative;	padding: 5px;	transition: 0.5s;}.ex-panel__icon:hover {	transform: scale(1.25);}.ex-panel__tip {	display:none;	background:#f00;	border-radius:50%;	width:8px;	height:8px;	top:0px;	right:0px;	position:absolute;}.gift__panel {    width: 100%;    display: none;    margin-top: 4px;}#gift__title {    cursor: pointer;}#gift__select {    width: 190px;}.gift__option {    margin-top: 5px;}#gift__giftId {    width: 40px;}#gift__reply {    width: 150px;}.livetool {	background-color: rgba(255,255,255,0.9);	width: 100%;	height: 200px;	position: relative;	bottom: 200px;	display: none;}.livetool__cell {	position: relative;    display: -webkit-box;    display: -webkit-flex;    display: flex;    box-sizing: border-box;    width: 100%;    padding: 10px 16px;    overflow: hidden;    color: #323233;    font-size: 14px;    line-height: 24px;	background-color: #fff;	border-bottom: 1px solid rgba(0,0,0,0.2);	flex-wrap: wrap;    -webkit-flex-wrap: wrap;}.livetool__cell_title {	flex: 1;    -webkit-box-flex: 1;}.livetool__cell_option {	flex: 1;	-webkit-box-flex: 1;	text-align: right;}.livetool__cell_switch {	float: right;}.mute__panel {    width: 100%;    display: none;    margin-top: 4px;}#mute__title {    cursor: pointer;}#mute__idlist {    cursor: pointer;    color: royalblue;    margin-left: 10px;}#mute__select {    width: 110px;}.mute__option {    margin-top: 5px;}#mute__word {    width: 70px;}#mute__count {    width: 30px;}#mute__time {    width: 65px;}.reply__panel {    width: 100%;    display: none;    margin-top: 4px;}#reply__title {    cursor: pointer;}#reply__select {    width: 190px;}.reply__option {    margin-top: 5px;}#reply__word {    width: 70px;}#reply__reply {    width: 147px;}.livetool__Treasure {    width: 100%;    position: relative;    z-index: 999;}#ex-point {    cursor: pointer;    float: left;    line-height: 30px;    -moz-user-select:none; /*火狐*/    -webkit-user-select:none; /*webkit浏览器*/    -ms-user-select:none; /*IE10*/    -khtml-user-select:none; /*早期浏览器*/    user-select:none;}#point__value {    color: #333;}#ex-exchange {    position: absolute;    left: 0;    bottom: 37px;    z-index: 100;}.exchange__panel {    width: 400px;    height: 500px;    position: relative;}.exchange__wrap {    width: 400px;    height: 500px;    background-color: white;    border-radius: 3%;    overflow-y: scroll;    overflow-x: hidden;    box-shadow: 0px 0px 20px 0px #888888;}.exchange__wrap::-webkit-scrollbar {    display:none}.exchange__close {    position: absolute;    color: rgb(127, 127, 137);    right: 10px;    top: 5px;    font-size: 15px;    cursor: pointer;    z-index: 101;}.item__wrap {    width: 100%;    height: 130px;    border-bottom: 1px solid rgba(121,127,137,0.4);    position: relative;}.item__pic {    left: 10px;    top: 10px;    position: absolute;    height: 110px;    width: 110px;}.item__name {    position: absolute;    top: 7px;    left: 130px;    color: #353536;;    font-size: 15px;    margin-right: 10px;}.item__description {    position: absolute;    top: 32px;    left: 130px;    font-size: 12px;    margin-right: 10px;    color: #969799;}.item__num {    position: absolute;    bottom: 27px;    left: 130px;    font-size: 12px;    color: #969799;}.item__price {    position: absolute;    bottom: 7px;    left: 130px;    font-size: 14px;    color: rgb(255,93,35);    font-weight: 600;}.item__exchange {    position: absolute;    bottom: 8px;    right: 10px;    font-size: 14px;    color: white;    text-align: center;    width: 80px;    height: 25px;        background-color: rgb(255,93,35);    border-radius: 999px;    cursor: pointer;}#ex-pointlist {    position: absolute;    width: 300px;    height: 400px;    background-color: white;    border-radius: 3%;    overflow: auto;    z-index: 100;    bottom: 37px;}#ex-pointlist::-webkit-scrollbar {    display:none}.pointlist__wrap {    width: 100%;    height: 100%;    margin: 15px 0;    position: absolute;}.pointlist__close {    position: absolute;    color: rgb(127, 127, 137);    right: 7px;    font-size: 15px;    cursor: pointer;}.pointlist__wrap table {    border-collapse: collapse;    margin: 0 auto;    text-align: center;}.pointlist__wrap td,.pointlist__wrap th {    border: 1px solid #cad9ea;    color: #666;    height: 30px;    width: 85px;}.pointlist__wrap thead th {    background-color: #CCE8EB;    width: 100px;}.pointlist__wrap tr:nth-child(odd) {    background: #fff;}.pointlist__wrap tr:nth-child(even) {    background: #F5FAFA;}.point__panel {    position: absolute;    left: 0px;    bottom: 37px;    display: none;    animation: move-in 0.75s;    z-index: 101;}@keyframes move-in {    0% {        opacity: 0;    }    100% {        opacity: 0.95;    }}.panel__wrap {    overflow: hidden;    background-color: white;    border-radius: 5%;    width: 120px;    box-shadow: 0px 2px 20px 0px #888888;    font-size: 14px;}.panel__cell {    width: 100%;    height: 37px;    line-height: 37px;    border-bottom: 1px solid rgba(121,127,137,0.4);    text-align: center;    cursor: pointer;}.panel__cell:hover {    background-color: rgb(217, 217, 217);    transition: 0.75s;}.panel__triangle {    width: 0px;    height: 0px;    border-color: white transparent transparent transparent;    border-style: solid;    border-width: 10px;    position: absolute;    left: 35px;}#ex-record {    width: 300px;    height: 400px;    position: absolute;    bottom: 67px;    z-index: 100;}.record__close {    position: absolute;    color: rgb(127, 127, 137);    right: -20px;    font-size: 15px;    cursor: pointer;}.records__wrap {    width: 100%;    height: 100%;    background-color: white;    border-radius: 3%;    box-shadow: 0px 0px 20px 0px #888888;    padding: 15px;    overflow-y: scroll;    overflow-x: hidden;}.records__wrap::-webkit-scrollbar {    display:none}.record__wrap {    height: 50px;    width: 100%;    border: 1px solid rgba(121,127,137,0.4);    margin-bottom: 10px;    display: -webkit-box;    display: -moz-box;     display: -ms-flexbox;    display: -webkit-flex;     display: flex;     transition: 0.75s;    cursor: pointer;}.record__wrap:hover {    background-color: #e9f5ff;}.record__left {    flex: 1;    position: relative;}.record__name {    position: absolute;    flex: 1;    color: #353536;;    font-size: 15px;    top: 2px;    margin-left: 5px;}.record__updatetime {    position: absolute;    margin-left: 5px;    font-size: 12px;    bottom: 2px;    color: #969799;}.record__price {    line-height: 50px;    color: rgb(255,93,35);    margin-right: 10px;}.record__pagenav {    display: -webkit-box;    display: -moz-box;     display: -ms-flexbox;    display: -webkit-flex;     display: flex;     width: 310px;    position: absolute;    bottom: -20px;    padding-left: 10px;    padding-right: 10px;    cursor: pointer;}.record__prev {    flex: 1;    text-align: center;    border: 1px solid rgba(121,127,137,0.8);    transition: 0.75s;    color: white;    background-color: rgb(57,169,237);}.record__prev:hover {    background-color: #7167ff;}.record__next {    flex: 1;    text-align: center;    border: 1px solid rgba(121,127,137,0.8);    transition: 0.75s;    background-color: rgb(57,169,237);    color: white;}.record__next:hover {    background-color: #7167ff;}.videoDiv {    width: 400px;    height: 200px;    background-color: rgba(255, 255, 255, 0);    position: absolute;    z-index: 7777;}.videoPlayer {    width: 100%;    height: 100%;    cursor: move;}.videoScale {    width: 10px;    height: 10px;    overflow: hidden;    cursor: se-resize;    position: absolute;    right: 0;    bottom: 0;    background-color: rgb(231, 57, 57);}.videoInfo {    width: 100%;    height: 30px;    background-color: gray;    position: absolute;    top: -30px;    line-height: 30px;}.videoClose {    width: 30px;    float: right;    color: white;}.videoQn, .videoCDN {    margin-left: 5px;}.videoRID {    margin: 0px 5px;    font-weight: 800;    font-size: medium;}#popup-player__prompt {    display: none;}.real-audience {    cursor: pointer;}#refresh-video {    float: left;    width: 24px;    height: 24px;    margin-right: 20px;    cursor: pointer;    background-size: contain;}.refresh-barrage {    display: inline-block;    vertical-align: top;    margin: 0 2px;    padding: 0 8px;    height: 22px;    line-height: 21px;    background-color: #fff;    border: 1px solid #e5e4e4;    -webkit-border-radius: 4px;    -moz-border-radius: 4px;    border-radius: 4px;    cursor: pointer;}#refresh-barrage__svg {    vertical-align: middle;}/*    Notice.css*/.noticejs-top{top:0;width:100%!important}.noticejs-top .item{border-radius:0!important;margin:0!important}.noticejs-topRight{top:10px;right:10px}.noticejs-topLeft{top:10px;left:10px}.noticejs-topCenter{top:10px;left:50%;transform:translate(-50%)}.noticejs-middleLeft,.noticejs-middleRight{right:10px;top:50%;transform:translateY(-50%)}.noticejs-middleLeft{left:10px}.noticejs-middleCenter{top:50%;left:50%;transform:translate(-50%,-50%)}.noticejs-bottom{bottom:0;width:100%!important}.noticejs-bottom .item{border-radius:0!important;margin:0!important}.noticejs-bottomRight{bottom:10px;right:10px}.noticejs-bottomLeft{bottom:10px;left:10px}.noticejs-bottomCenter{bottom:10px;left:50%;transform:translate(-50%)}.noticejs{font-family:Helvetica Neue,Helvetica,Arial,sans-serif}.noticejs .item{margin:0 0 10px;border-radius:3px;overflow:hidden}.noticejs .item .close{float:right;font-size:18px;font-weight:700;line-height:1;color:#fff;text-shadow:0 1px 0 #fff;opacity:1;margin-right:7px}.noticejs .item .close:hover{opacity:.5;color:#000}.noticejs .item a{color:#fff;border-bottom:1px dashed #fff}.noticejs .item a,.noticejs .item a:hover{text-decoration:none}.noticejs .success{background-color:#64ce83}.noticejs .success .noticejs-heading{background-color:#3da95c;color:#fff;padding:10px}.noticejs .success .noticejs-body{color:#fff;padding:10px}.noticejs .success .noticejs-body:hover{visibility:visible!important}.noticejs .success .noticejs-content{visibility:visible}.noticejs .info{background-color:#3ea2ff}.noticejs .info .noticejs-heading{background-color:#067cea;color:#fff;padding:10px}.noticejs .info .noticejs-body{color:#fff;padding:10px}.noticejs .info .noticejs-body:hover{visibility:visible!important}.noticejs .info .noticejs-content{visibility:visible}.noticejs .warning{background-color:#ff7f48}.noticejs .warning .noticejs-heading{background-color:#f44e06;color:#fff;padding:10px}.noticejs .warning .noticejs-body{color:#fff;padding:10px}.noticejs .warning .noticejs-body:hover{visibility:visible!important}.noticejs .warning .noticejs-content{visibility:visible}.noticejs .error{background-color:#e74c3c}.noticejs .error .noticejs-heading{background-color:#ba2c1d;color:#fff;padding:10px}.noticejs .error .noticejs-body{color:#fff;padding:10px}.noticejs .error .noticejs-body:hover{visibility:visible!important}.noticejs .error .noticejs-content{visibility:visible}.noticejs .progressbar{width:100%}.noticejs .progressbar .bar{width:1%;height:30px;background-color:#4caf50}.noticejs .success .noticejs-progressbar{width:100%;background-color:#64ce83;margin-top:-1px}.noticejs .success .noticejs-progressbar .noticejs-bar{width:100%;height:5px;background:#3da95c}.noticejs .info .noticejs-progressbar{width:100%;background-color:#3ea2ff;margin-top:-1px}.noticejs .info .noticejs-progressbar .noticejs-bar{width:100%;height:5px;background:#067cea}.noticejs .warning .noticejs-progressbar{width:100%;background-color:#ff7f48;margin-top:-1px}.noticejs .warning .noticejs-progressbar .noticejs-bar{width:100%;height:5px;background:#f44e06}.noticejs .error .noticejs-progressbar{width:100%;background-color:#e74c3c;margin-top:-1px}.noticejs .error .noticejs-progressbar .noticejs-bar{width:100%;height:5px;background:#ba2c1d}@keyframes noticejs-fadeOut{0%{opacity:1}to{opacity:0}}.noticejs-fadeOut{animation-name:noticejs-fadeOut}@keyframes noticejs-modal-in{to{opacity:.3}}@keyframes noticejs-modal-out{to{opacity:0}}.noticejs-rtl .noticejs-heading{direction:rtl}.noticejs-rtl .close{float:left!important;margin-left:7px;margin-right:0!important}.noticejs-rtl .noticejs-content{direction:rtl}.noticejs{position:fixed;z-index:10050;width:320px}.noticejs ::-webkit-scrollbar{width:8px}.noticejs ::-webkit-scrollbar-button{width:8px;height:5px}.noticejs ::-webkit-scrollbar-track{border-radius:10px}.noticejs ::-webkit-scrollbar-thumb{background:hsla(0,0%,100%,.5);border-radius:10px}.noticejs ::-webkit-scrollbar-thumb:hover{background:#fff}.noticejs-modal{position:fixed;width:100%;height:100%;background-color:#000;z-index:10000;opacity:.3;left:0;top:0}.noticejs-modal-open{opacity:0;animation:noticejs-modal-in .3s ease-out}.noticejs-modal-close{animation:noticejs-modal-out .3s ease-out;animation-fill-mode:forwards}/** * PostbirdAlertBox.js * -    原生javascript弹框插件 * Author:  Postbird - http://www.ptbird.cn * License: MIT * Date:    2017-09-23 */.postbird-box-container {    width: 100%;    height: 100%;    overflow: hidden;    position: fixed;    top: 0;    left: 0;    z-index: 9999;    background-color: rgba(0, 0, 0, 0.2);    display: block;    -webkit-user-select: none;    -moz-user-select: none;    -ms-user-select: none;    user-select: none}.postbird-box-container.active {    display: block}.postbird-box-content {    min-width: 400px;    max-width: 600px;    min-height: 150px;    background-color: #fff;    border: solid 1px #dfdfdf;    position: absolute;    top: 50%;    left: 50%;    transform: translate(-50%, -50%);    margin-top: -100px}.postbird-box-header {    width: 100%;    padding: 10px 15px;    position: relative;    font-size: 1.1em;    letter-spacing: 2px}.postbird-box-close-btn {    cursor: pointer;    font-weight: 700;    color: #000;    float: right;    opacity: .5;    font-size: 1.3em;    margin-top: -3px;    display: none}.postbird-box-close-btn:hover {    opacity: 1}.postbird-box-text {    box-sizing: border-box;    width: 100%;    padding: 0 10%;    text-align: center;    line-height: 40px;    font-size: 20px;    letter-spacing: 1px}.postbird-box-footer {    width: 100%;    position: absolute;    padding: 0;    margin: 0;    bottom: 0;    display: flex;    display: -webkit-flex;    justify-content: space-around;    border-top: solid 1px #dfdfdf;    align-items: flex-end}.postbird-box-footer .btn-footer {    line-height: 44px;    border: 0;    cursor: pointer;    background-color: #fff;    color: #0e90d2;    font-size: 1.1em;    letter-spacing: 2px;    transition: background-color .5s;    -webkit-transition: background-color .5s;    -o-transition: background-color .5s;    -moz-transition: background-color .5s;    outline: 0}.postbird-box-footer .btn-footer:hover {    background-color: #e5e5e5}.postbird-box-footer .btn-block-footer {    width: 100%}.postbird-box-footer .btn-left-footer,.postbird-box-footer .btn-right-footer {    position: relative;    width: 100%}.postbird-box-footer .btn-left-footer::after {    content: "";    position: absolute;    right: 0;    top: 0;    background-color: #e5e5e5;    height: 100%;    width: 1px}.postbird-box-footer .btn-footer-cancel {    color: #333}.postbird-prompt-input {    width: 100%;    padding: 5px;    font-size: 16px;    border: 1px solid #ccc;    outline: 0}.onoffswitch {    position: relative; width: 45px;    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;}.onoffswitch-checkbox {    position: absolute;    opacity: 0;    pointer-events: none;}.onoffswitch-label {    display: block; overflow: hidden; cursor: pointer;    height: 20px; padding: 0; line-height: 20px;    border: 2px solid #E3E3E3; border-radius: 20px;    background-color: #FFFFFF;    transition: background-color 0.3s ease-in;}.onoffswitch-label:before {    content: "";    display: block; width: 20px; margin: 0px;    background: #FFFFFF;    position: absolute; top: 0; bottom: 0;    right: 23px;    border: 2px solid #E3E3E3; border-radius: 20px;    transition: all 0.3s ease-in 0s; }.onoffswitch-checkbox:checked + .onoffswitch-label {    background-color: #3AAD38;}.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {   border-color: #3AAD38;}.onoffswitch-checkbox:checked + .onoffswitch-label:before {    right: 0px; }.layui-timeline {    padding-left: 5px;}.layui-timeline-item {    position: relative;    padding-bottom: 20px;}li {    list-style: none;}.layui-timeline-item:first-child::before {    display: block;}.layui-timeline-item:last-child::before {    content: '';    position: absolute;    left: 5px;    top: 0;    z-index: 0;    width: 0;    height: 100%;}.layui-timeline-item::before {    content: '';    position: absolute;    left: 5px;    top: 0;    z-index: 0;    width: 1px;    height: 100%;}.layui-timeline-item::before,hr {    background-color: #e6e6e6;}.layui-timeline-axis {    position: absolute;    left: -5px;    top: 0;    z-index: 10;    width: 20px;    height: 20px;    line-height: 20px;    background-color: #fff;    color: #5FB878;    border-radius: 50%;    text-align: center;    cursor: pointer;}.layui-icon {    font-family: layui-icon !important;    font-size: 16px;    font-style: normal;}.layui-timeline-content {    padding-left: 25px;}.layui-text {    line-height: 22px;    font-size: 14px;    color: rgb(85,85,85);}.layui-timeline-title {    position: relative;}
 `));
 	document.head.appendChild(style);
 }
 
 (function() {
-	if (window.location.host == "msg.douyu.com") {
-		if (getQueryString("exid") == "chun") {
-			signMotorcade_Sign();
-		}
-	} else {
-        if (String(location.href).indexOf("exid=chun") != -1) {
-            let intID = setInterval(() => {
-                if (typeof(document.querySelector('div.wfs-2a8e83')) != "undefined") {
-                    document.querySelector('div.wfs-2a8e83').click();
-					document.querySelector('label.layout-Player-asidetoggleButton').click();
-					let l = document.querySelectorAll(".tip-e3420a > ul > li").length;
-					document.querySelectorAll(".tip-e3420a > ul > li")[l - 1].click();
-                    clearInterval(intID);
-                }
-            }, 1000);
-        } else {
-            init();
-            let intID = setInterval(() => {
-                if (typeof(document.getElementsByClassName("BackpackButton")[0]) != "undefined") {
-                    setTimeout(() => {
-                        initStyles();
-                        initPkg();
-                        initTimer();
-                    }, 1500)
-                    clearInterval(intID);
-                }
-            }, 1000);
-        }
-	}
+	initRouter(window.location.href);
 })();
 // 全局变量及公共函数
 var exTimer = 0; // 总时钟句柄
@@ -168,7 +140,7 @@ async function verifyFans(room_id, level) {
 			ret = true;
 			break;
 		} else {
-			ret = true;
+			ret = false;
 		}
 	}
 	return ret;
@@ -678,10 +650,6 @@ function getBarrageTxt_Tiangou() {
         });
 	})
 }
-// 弹幕右键信息增强
-// 1. 显示粉丝牌
-// 2. 支持禁言
-// 3. 支持查询最近10条弹幕
 function initPkg_BarragePanel() {
 	let timer = setInterval(() => {
         if (document.getElementsByClassName("danmuTips-1ee820").length > 0) {
@@ -690,10 +658,12 @@ function initPkg_BarragePanel() {
             setBarragePanelCallBack();
         }
     }, 1500);
+
+    initPkg_BarragePanel_Tip();
 }
 
 function setBarragePanelCallBack() {
-    let a = new DomHook("#Ex_BarragePanel", (m) => {
+    let a = new DomHook("#Ex_BarragePanel", true, (m) => {
         let isAttributes = false;
         if (m.length > 0) {
             for (let i = 0; i < m.length; i++) {
@@ -712,11 +682,12 @@ function setBarragePanelCallBack() {
                     let userNameDom = barragePanel.getElementsByClassName("danmuAuthor-3d7b4a");
                     let id = "";
                     if (userNameDom.length > 0) {
-                        id = userNameDom[0].innerHTML;
+                        id = userNameDom[0].innerText;
                         setUserFansMedal(userNameDom[0], id);
                         setMuteButton(barragePanel);
                         setSearchBarrageButton(barragePanel);
                         setMuteTimeButton(barragePanel);
+                        setReplyBarrageButton(barragePanel);
                         setBarrgePanelFunc(barragePanel, id);
                     }
                 }
@@ -730,11 +701,12 @@ function setBarragePanelCallBack() {
                 
                 let id = "";
                 if (userNameDom.length > 0) {
-                    id = userNameDom[0].innerHTML;
+                    id = userNameDom[0].innerText;
                     setUserFansMedal(userNameDom[0], id);
-                    // setMuteButton(barragePanel);
-                    // setSearchBarrageButton(barragePanel);
-                    // setMuteTimeButton(barragePanel);
+                    setMuteButton(barragePanel);
+                    setSearchBarrageButton(barragePanel);
+                    setMuteTimeButton(barragePanel);
+                    setReplyBarrageButton(barragePanel);
                     setBarrgePanelFunc(barragePanel, id);
                 }
 
@@ -759,11 +731,45 @@ function getUserFansMedal(userName) {
     }
     return ret;
 }
+function getUserLevelText(userName) {
+    let ret = "";
+    let barrageList = document.getElementsByClassName("Barrage-listItem");
+    for (let i = barrageList.length - 1; i >= 0; i--) {
+        let barragePanel = barrageList[i].lastElementChild;
+        if (barragePanel != null && barragePanel != undefined && barragePanel.innerHTML.indexOf(userName) != -1) {
+            let roomAdmin = barragePanel.getElementsByClassName("Barrage-icon--roomAdmin");
+            if (roomAdmin.length > 0) {
+                ret += "【房管】";
+            }
+            let noble = barragePanel.getElementsByClassName("Barrage-nobleImg");
+            if (noble.length > 0) {
+                ret += `【${ noble[0].title }】`;
+            }
+            let level = barragePanel.getElementsByClassName("UserLevel");
+            if (level.length > 0) {
+                ret += level[0].title;
+            }
+            break;
+        }
+    }
+    return ret;
+}
 
 function setUserFansMedal(dom, userName) {
+    if (document.getElementById("barragePanel__id") == undefined) {
+        dom.removeChild(dom.childNodes[0]);
+        let userLevel = getUserLevelText(userName);
+        let a = document.createElement("span");
+        a.innerHTML = userName;
+        a.title = userLevel;
+        a.id = "barragePanel__id";
+        dom.insertBefore(a, dom.childNodes[0]);
+    }
+    
+
     let fansMedal = getUserFansMedal(userName);
     if (fansMedal != false) {
-        let a = document.createElement("div");
+        a = document.createElement("div");
         a.style = "display:inline-block";
         a.appendChild(fansMedal);
         dom.insertBefore(a, dom.childNodes[0]);
@@ -771,6 +777,9 @@ function setUserFansMedal(dom, userName) {
 }
 
 function setMuteButton(dom) {
+    if (document.getElementById("barragePanel__mute") != null) {
+        return;
+    }
     let a = document.createElement("div");
     a.className = "ReportButton-41fa9e";
     a.id = "barragePanel__mute";
@@ -780,6 +789,9 @@ function setMuteButton(dom) {
 }
 
 function setSearchBarrageButton(dom) {
+    if (document.getElementById("barragePanel__search") != null) {
+        return;
+    }
     let a = document.createElement("div");
     a.className = "HideButton-d22988";
     a.innerText = "查弹幕";
@@ -788,7 +800,22 @@ function setSearchBarrageButton(dom) {
     dom.insertBefore(a, dom.childNodes[0]);
 }
 
+function setReplyBarrageButton(dom) {
+    if (document.getElementById("barragePanel__reply") != null) {
+        return;
+    }
+    let a = document.createElement("div");
+    a.className = "HideButton-d22988";
+    a.innerText = "回复";
+    a.id = "barragePanel__reply";
+    a.style = "margin-top:90px;z-index:5";
+    dom.insertBefore(a, dom.childNodes[0]);
+}
+
 function setMuteTimeButton(dom) {
+    if (document.getElementsByClassName("barragePanel__muteTime").length > 0) {
+        return;
+    }
     let a = document.createElement("div");
     a.className = "barragePanel__muteTime";
     a.innerHTML = `
@@ -810,6 +837,13 @@ function setMuteTimeButton(dom) {
 }
 
 function setBarrgePanelFunc(parentDom, id) {
+    document.getElementById("barragePanel__reply").onclick = () => {
+        let txt = parentDom.getElementsByClassName("danmuContent-25f266")[0].innerText;
+        if (txt != "") {
+            document.getElementsByClassName("ChatSend-txt")[0].value = `@${ id }：${ txt }`;
+        }
+    };
+
     document.getElementById("barragePanel__mute").onclick = async () => {
         let value = document.getElementById("barragePanel__muteSelect").value || "1";
         let ret = await addMuteUser(rid, id, value);
@@ -905,6 +939,49 @@ function getUserRecentBarrage(name) {
         });
     });
 }
+function initPkg_BarragePanel_Tip() {
+    setBarragePanelTipCallBack();
+}
+
+function setBarragePanelTipCallBack() {
+    let a = new DomHook("#comment-dzjy-container", false, (m) => {
+        if (m.length <= 0) {
+            return;
+        }
+        if (m[0].addedNodes.length <= 0) {
+            return;
+        }
+        let dom = m[0].addedNodes[0];
+        renderBarragePanelTip(dom);
+        setBarragePanelTipFunc();
+    })
+}
+
+function renderBarragePanelTip(dom) {
+    let a = document.createElement("div");
+    a.style.display = "inline-block";
+    document.getElementsByClassName("btnscontainer-4e2ed0")[0].insertBefore(a, dom.childNodes[0]);
+
+
+    a = document.createElement("p");
+    a.className = "sugun-e3fbf6";
+    a.innerText = "|";
+    dom.appendChild(a);
+
+    a = document.createElement("div");
+    a.className = "labelfisrt-407af4";
+    a.id = "barrage-panel-tip__+1"
+    a.innerText = "+1";
+    dom.appendChild(a);
+}
+
+function setBarragePanelTipFunc() {
+    document.getElementById("barrage-panel-tip__+1").onclick = () => {
+        let txt = document.getElementById("comment-higher-container").innerText;
+        sendBarrage(txt);
+    }
+}
+
 function initPkg_Console() {
 	console_watermark_douyEx();
 }
@@ -960,23 +1037,19 @@ function initPkg_CopyRealLive_Func() {
 
 
 function initPkg_ExIcon() {
-	
-	pkg_ExIcon_insertDom();
-	pkg_ExIcon_initFunc();
+	initPkg_ExIcon_insertDom();
+	initPkg_ExIcon_Func();
 }
-function pkg_ExIcon_insertDom() {
+function initPkg_ExIcon_insertDom() {
 	let a = document.createElement("div");
 	a.className = "ex-icon";
 	a.innerHTML = '<a title="～ (´• ᵕ •`)*✲"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><image width="24" height="24" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJN AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABdFBMVEUAAAAzNjozNjozNjoz NjozNjozNjozNjozNjozNjozNjozNjozNjo0NjpCMjY0NjozNjozNjo9MzczNjozNjo4NThBMjZR U1eusLHQ0dKWmJozNjozNjpTVVl3eXxWWVxnaWyDhYi+v8BWWFzf3+AzNjptb3L09PTv7++Fh4ro 6OlER0rGx8iGh4pOUVQ+QUVXWVyWmJkzNjpxc3bZ2tv39/fX19jHyMnf4OBSVVg+QUWPkZOPkJM5 PEDo6Oja2tthZGeXmJrp6epTVVg0NzttcHKMjY+cnp+Ehog0NztjKSx7IyWIHyF1JCd8IiSpFRfN DAzWCQlmKCt+IiTEDg/UCgq5EhJ+ISTJDQ2WGxyjFxhaLC/SCgp2JCZJMDM8MzdQLjGFICJiKSx1 JCbPCwvFDg56IyVKMDOqq61rbXDNzs+2EhNOLzJrJypRLjE5NTg2OT2Ympw4NTheKy5PLzI5PED+ /v7////d3t/39/f8/Pz5+vpEN+40AAAASnRSTlMAAxorEg1Al7e/swd55v7QI4356Fvz/v7+/f4C Ff7+/v79/f7+Cf7+/v39/f39/v7+/ND8/f7+/v7++P398/79/fz9/uX9/f390Kmu6iUAAAABYktH RHdGZPnXAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5AUdCCsAU/Ff1wAAAWNJREFUKM9j YCAIGJmYmVkYMYRZ2dg5ODm52Nm4UYV5ePm8vH18fL34+HlYEeICgkJ+/gGBQBDgHyQkyAJXLygc HBIaCAahYcHCIjA9PELBgUggXJQHqoHXLwTIj4j084uKADJConkhWtjE/IHmxMTGxccnxMYATUvk YwO7nz0JaG9ErLiEpKSUeHJKYGCqF7s0UIKJIw2oPzJdIiMzM0siLhvI8eMAmcXMmZObm5uXL5lZ UFAoWVQM5JRwyoAlZOXk5ORLIRKlCkCOLFiChUuxrLxcSVkqq7CwQkpZpby8TJFLFWy5mnp5uYYm xHLNyvJyLTWw5Qxs2jpV5eXVunr6+ga61eXlVYbaYOcycBsZm5SXl5uamZtbmAIZJpZG0CDmsbIu RwI2tjyIQLSxq4KIVtnbIAKRgUXE1sHRCei2MidHZ1sRVeSIctF2dXN393DV9kSOKNxRCwLSrDIy qtKEEw0AQgtYsEqTgPQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMDUtMjlUMDg6NDM6MDArMDA6 MDA6vG69AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTA1LTI5VDA4OjQzOjAwKzAwOjAwS+HWAQAA AABJRU5ErkJggg=="/></svg><i id="ex-icon__tip" class="ex-panel__tip"></i></a>';
 	
 	let b = document.getElementsByClassName("PlayerToolbar-Wealth")[0];
 	b.insertBefore(a, b.childNodes[0]);
-	
-	
 }
-function pkg_ExIcon_initFunc() {
+function initPkg_ExIcon_Func() {
 	document.getElementsByClassName("ex-icon")[0].addEventListener("click", showExPanel);
-	// unsafeWindow.showExPanel = showExPanel;
 }
 
 function ExIcon_showTip(a) {
@@ -1803,9 +1876,9 @@ function getTslist(callback) {
 }
 
 function initPkg_ExPanel() {
-	pkg_ExPanel_insertDom();
+	initPkg_ExPanel_insertDom();
 }
-function pkg_ExPanel_insertDom() {
+function initPkg_ExPanel_insertDom() {
 	let a = document.createElement("div");
 	a.className = "ex-panel";
 	a.innerHTML = '<div class="ex-panel__wrap"></div>';
@@ -2255,8 +2328,10 @@ function getFishPond_Task() {
 	}).then(res => {
 		return res.json();
 	}).then(ret => {
-		for (let i = 0; i < ret.data.length; i++) {
-			showMessage("【鱼塘任务】领取结果:成功领取" + ret.data[i].name + ret.data[i].num + "个", "success");
+		if (ret.data !== null) {
+			for (let i = 0; i < ret.data.length; i++) {
+				showMessage("【鱼塘任务】领取结果:成功领取" + ret.data[i].name + ret.data[i].num + "个", "success");
+			}
 		}
 	}).catch(err => {
 		console.log("请求失败!", err);
@@ -2646,6 +2721,8 @@ function initPkg_LiveTool_Gift_Handle(text) {
     
 }
 
+let timer_closing;
+let closingNum = 0;
 function initPkg_LiveTool_LiveNotice() {
 }
 
@@ -2657,6 +2734,20 @@ function initPkg_LiveTool_LiveNotice_Handle(text) {
             showMessageWindow("开播提醒", "直播间：" + rid + "开播了，点我签到", () => {
                 signRoom(rid);
             });
+        } else {
+            clearInterval(timer_closing);
+            timer_closing = setInterval(() => {
+                if (closingNum > 20) {
+                    clearInterval(timer_closing);
+                    closingNum = 0;
+                }
+                let x = document.getElementsByClassName("dy-ModalRadius-close-x");
+                if (x.length > 0) {
+                    clearInterval(timer_closing);
+                    x[0].click();
+                }
+                closingNum++;
+            }, 500);
         }
     }
 }
@@ -2692,6 +2783,8 @@ function initPkg_LiveTool_Module() {
 	initPkg_LiveTool_Gift();
 	initPkg_LiveTool_Reply();
 	initPkg_LiveTool_Treasure();
+
+	// initPkg_LiveTool_Bojiang_Handle();
 }
 function LiveTool_insertModal() {
 	let a = document.createElement("div");
@@ -2736,6 +2829,7 @@ function initPkg_LiveTool_HandleFunc() {
 		initPkg_LiveTool_Reply_Handle(ret); // 关键词回复
 		initPkg_LiveTool_Gift_Handle(ret); // 自动谢礼物
 		initPkg_LiveTool_Treasure_Handle(ret);
+		// initPkg_LiveTool_Friend_Handle(ret);
     });
 }
 
@@ -2754,11 +2848,14 @@ function selectOptionByValue(selectId, checkValue) {
     }  
 }
 let isMuteOn = false;
-let canMute;
+// let canMute;
 let muteWordList = {};
 let muteIdList = {};
 let muteIdListShow = [];
 function initPkg_LiveTool_Mute() {
+    if (rid == "5189167") {
+        return;
+    }
     LiveTool_Mute_insertDom();
     LiveTool_Mute_insertFunc();
     initPkg_Mute_Set();
@@ -2947,7 +3044,7 @@ function saveData_isMute() {
 }
 
 async function initPkg_Mute_Set() {
-    canMute = await getRoomAdminStatus();
+    // canMute = await getRoomAdminStatus();
 	// 设置初始化
 	let ret = localStorage.getItem("ExSave_Mute");
 	
@@ -2983,10 +3080,13 @@ async function initPkg_Mute_Set() {
 }
 
 async function initPkg_LiveTool_Mute_Handle(text) {
-    if (canMute != true) {
+    // if (canMute != true) {
+    //     return;
+    // }
+    if (isMuteOn == false) {
         return;
     }
-    if (isMuteOn == false) {
+    if (rid == "5189167") {
         return;
     }
     if (getType(text) == "chatmsg") {
@@ -3471,7 +3571,7 @@ function getTreasure(roomid, rpid, deviceid, idName) {
                 } else {
                     showMessage("自动抢宝箱初始化失败", "error");
                 }
-            } else if(ret.data.msg != "领取失败") {
+            } else if(ret.data.msg != "领取失败" && ret.data.msg != "验证码不正确") {
                 let msg = "";
                 if (ret.data.prop_id == "") {
                     msg = "鱼丸x" + ret.data.silver;
@@ -3684,7 +3784,7 @@ function setNightMode() {
     .BatchGiveForm-btn,.Backpack-prop.is-blank,.GuessMainPanel-sliderItem{background-color:rgb(47,48,53) !important;}
     .Backpack{background-color:rgb(35,36,39) !important;border:1px solid rgb(35,36,39) !important;}
     .Backpack-name,.NormalCard-btn,.NormalCard-close,.NobleCard-close,.ReportButton-41fa9e,.HideButton-d22988,.txtHidden-486e56,.BackpackInfoPanel-name,.NormalCard-name{color:rgb(187,187,187) !important;}
-    .Backpack-propPage,.BatchProp-content{background-color:rgb(35,36,39) !important;}
+    .Backpack-propPage,.BatchProp-content{background-color:rgb(35,36,39) !important;color:rgb(149,149,149)!important;}
     .BackpackInfoPanel-content{background-color:rgb(35,36,39) !important;border:1px solid rgb(35,36,39) !important;}
     .BatchProp-customIpt,.BatchGiveForm-num,.GiftInfoPanel-intro{color:rgb(149,149,149) !important;}
     .GuessReturnYwFdSlider-numIptWrap,.GuessReturnYwFdSlider-numIpt{background-color:rgb(47,48,53) !important;color:rgb(149,149,149) !important;}
@@ -3711,12 +3811,498 @@ function setNightMode() {
     .Barrage-nickName.is-self{color:rgb(255,0,51)!important;}
     .barragePanel__funcPanel{background:rgba(47,49,53,0.9) !important;}
     .layui-text{color:rgb(187,187,187) !important;}
+    .GuessReturnYwFdSlider-ywNum{color:rgb(237,90,101) !important;}
+    .VideoBottomTabs span{color:rgb(204,204,204)}
+    #point__value{color:rgb(191,191,191) !important;}
     `;
     StyleHook_set("Ex_Style_NightMode", cssText);
 
 }
 function cancelNightMode() {
     StyleHook_remove("Ex_Style_NightMode");
+}
+function initPkg_Point() {
+	initPkg_Point_insertDom();
+    initPkg_Point_Func();
+    initPkg_Point_Constructor();
+    initPkg_Point_Module();
+}
+
+function initPkg_Point_Module() {
+    initPkg_Point_PointPanel();
+}
+
+function initPkg_Point_insertDom() {
+	let a = document.createElement("div");
+    a.id = "ex-point";
+    a.innerHTML = `
+    <span>💗 积分</span>
+    <span id="point__value" class="PlayerToolbar-dataLoadding"></span>
+    `;
+	let b = document.getElementsByClassName("PlayerToolbar-Wealth")[0];
+	b.insertBefore(a, b.childNodes[0]);
+}
+
+function initPkg_Point_Func() {
+    document.getElementById("ex-point").addEventListener("click", () => {
+        let a = document.getElementsByClassName("point__panel")[0];
+        if (a.style.display != "block") {
+            a.style.display = "block";
+        } else {
+            a.style.display = "none";
+        }
+    })
+}
+
+async function initPkg_Point_Constructor() {
+    let ret = await getUserPoint(dyToken);
+    let valueDom = document.getElementById("point__value");
+    if (ret.error == "0") {
+        valueDom.className = "";
+        valueDom.innerText = ret.data[0].point;
+        document.getElementById("ex-point").title = `更新时间：${ ret.data[0].update_time }`;
+    } else if (ret.error == "2") {
+        alert(ret.msg);
+    } else {
+        valueDom.className = "";
+        valueDom.innerText = "0";
+    }
+}
+
+async function updateUserPoint() {
+    let ret = await getUserPoint(dyToken);
+    let valueDom = document.getElementById("point__value");
+    if (ret.error == "0") {
+        valueDom.className = "";
+        valueDom.innerText = ret.data[0].point;
+        document.getElementById("ex-point").title = `更新时间：${ ret.data[0].update_time }`;
+        showMessage("【积分系统】积分更新完毕", "success");
+    } else if (ret.error == "2") {
+        alert(ret.msg);
+    } else {
+        valueDom.className = "";
+        valueDom.innerText = "0";
+    }
+}
+
+function getUserPoint(token) {
+    // 获取用户积分
+    return new Promise(resolve => {
+        GM_xmlhttpRequest({
+            method: "POST",
+            url: "http://122.51.5.63:27999/douyu/point/5189167/query_by_uid",
+            data: "token=" + token,
+            responseType: "json",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            onload: function(response) {
+                let ret = response.response;
+                resolve(ret);
+            }
+        });
+    })
+}
+
+function getItemList(token) {
+    // 获取物品列表
+    return new Promise(resolve => {
+        GM_xmlhttpRequest({
+            method: "POST",
+            url: "http://122.51.5.63:27999/douyu/point/5189167/query_item",
+            data: "token=" + token,
+            responseType: "json",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            onload: function(response) {
+                let ret = response.response;
+                resolve(ret);
+            }
+        });
+    })
+}
+
+function exchangeItem(token, item_id, id, info) {
+    // 兑换物品
+    return new Promise(resolve => {
+        GM_xmlhttpRequest({
+            method: "POST",
+            url: "http://122.51.5.63:27999/douyu/point/5189167/exchange",
+            data: "token=" + token + "&item_id=" + item_id + "&id=" + id + "&info=" + info,
+            responseType: "json",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            onload: function(response) {
+                let ret = response.response;
+                resolve(ret);
+            }
+        });
+    })
+}
+
+
+function getExchangeRecord(token, offset) {
+    return new Promise(resolve => {
+        GM_xmlhttpRequest({
+            method: "POST",
+            url: "http://122.51.5.63:27999/douyu/point/5189167/query_exchange",
+            data: "token=" + token + "&offset=" + offset,
+            responseType: "json",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            onload: function(response) {
+                let ret = response.response;
+                resolve(ret);
+            }
+        });
+    })
+}
+
+function getPointList(token) {
+    return new Promise(resolve => {
+        GM_xmlhttpRequest({
+            method: "POST",
+            url: "http://122.51.5.63:27999/douyu/point/5189167/point_list",
+            data: "token=" + token,
+            responseType: "json",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            onload: function(response) {
+                let ret = response.response;
+                resolve(ret);
+            }
+        });
+    })
+}
+function initPkg_Point_PointExchange() {
+    initPkg_Point_PointExchange_insertDom();
+    initPkg_Point_PointExchange_insertFunc();
+}
+function initPkg_Point_PointExchange_insertDom() {
+	renderExchangePanel();
+}
+
+function initPkg_Point_PointExchange_insertFunc() {
+
+}
+
+
+async function renderExchangePanel() {
+    if (document.getElementById("ex-exchange") !== null) {
+        return;
+    }
+
+    let ret = await getItemList(dyToken);
+    if (ret.error != "0") {
+        showMessage("【积分系统】获取物品列表失败：" + ret.msg, "error");
+        return;
+    }
+    if (ret.data == null) {
+        showMessage("【积分系统】暂无可兑换的物品", "error");
+        return;
+    }
+
+    let a = document.createElement("div");
+    a.id = "ex-exchange";
+    
+    let html = `<div class="exchange__panel"><div class="exchange__close">X</div>
+    <div class="exchange__wrap">`;
+    for (let i = 0; i < ret.data.length; i++) {
+        html = html + `
+            <div class="item__wrap">
+                <img class="item__pic" src="${ ret.data[i].pic }" />
+                <span class="item__name">${ ret.data[i].name }</span>
+                <span class="item__description">${ ret.data[i].description }</span>
+                <span class="item__num">剩余 ${ ret.data[i].num } 件</span>
+                <span class="item__price">💗${ ret.data[i].price }</span>
+                <div class="item__exchange">兑换</div>
+            </div>
+        `;
+    }
+    html = html + "</div></div>";
+
+    a.innerHTML = html;
+
+    let b = document.getElementsByClassName("PlayerToolbar-Wealth")[0];
+    b.insertBefore(a, b.childNodes[0]);
+    
+    bindExchangePanel(ret);
+}
+
+function bindExchangePanel(itemJson) {
+    let dom = document.getElementsByClassName("item__exchange");
+    for (let i = 0; i < dom.length; i++) {
+        dom[i].onclick = () => {
+            exchangeItemEvent(itemJson.data[i].id, itemJson.data[i].num, itemJson.data[i].price);
+        }
+    }
+    document.getElementsByClassName("exchange__close")[0].onclick = () => {
+        let a = document.getElementById("ex-exchange");
+        if (a !== null) {
+            a.remove();
+        }
+    }
+}
+async function exchangeItemEvent(item_id, item_num, item_price){
+    if (item_num <= 0) {
+        showMessage("【积分系统】兑换失败：物品数量不足", "error");
+        return;
+    }
+    let currentPoint = document.getElementById("point__value").innerText;
+    if (currentPoint - item_price < 0) {
+        showMessage("【积分系统】兑换失败：积分不足", "error");
+        return;
+    }
+
+    showPrompt("请填写备注信息（联系方式/收获地址）",async (info) => {
+        if (info == "") {
+            showMessage("【积分系统】兑换失败：未填写备注信息", "error");
+            return;
+        }
+        
+        let id = await getUserName();
+        let ret = await exchangeItem(dyToken, item_id, id, info);
+        if (ret.error == "0") {
+            showMessage("【积分系统】" + ret.msg, "success");
+            if (ret.data.length > 0) {
+                document.getElementById("point__value").innerText = ret.data[0].point;
+                document.getElementById("ex-point").title = `更新时间：${ ret.data[0].update_time }`;
+            }
+        } else {
+            showMessage("【积分系统】" + ret.msg, "error");
+        }
+    }, () => {return});
+    
+}
+
+function initPkg_Point_PointList() {
+    initPkg_Point_PointList_insertDom();
+}
+function initPkg_Point_PointList_insertDom() {
+    renderPointList();
+}
+
+function initPkg_Point_PointList_insertFunc() {
+    document.getElementsByClassName("pointlist__close")[0].onclick = () => {
+        let a = document.getElementById("ex-pointlist");
+        if (a !== null) {
+            a.remove();
+        }
+    }
+}
+
+async function renderPointList() {
+    if (document.getElementById("ex-pointlist") !== null) {
+        return;
+    }
+
+    let ret = await getPointList(dyToken);
+    if (ret.error != "0") {
+        showMessage("【积分系统】获取积分榜失败：" + ret.msg, "error");
+        return;
+    }
+    if (ret.data == null) {
+        showMessage("【积分系统】积分榜暂无数据", "error");
+        return;
+    }
+
+    let a = document.createElement("div");
+    a.id = "ex-pointlist";
+    
+    let html = `<div class="pointlist__close">X</div>
+    <div class="pointlist__wrap">
+    <table>
+        <tr>
+            <th>排名</th>
+            <th>昵称</th>
+            <th>积分</th>
+        </tr>`;
+    for (let i = 0; i < ret.data.length; i++) {
+        html = html + `
+        <tr>
+            <td>${ i + 1 }</td>
+            <td>${ ret.data[i].id }</td>
+            <td>${ ret.data[i].point }</td>
+        </tr>
+        `;
+    }
+    html = html + "</table></div>";
+
+    a.innerHTML = html;
+
+    let b = document.getElementsByClassName("PlayerToolbar-Wealth")[0];
+    b.insertBefore(a, b.childNodes[0]);
+
+    // 异步函数所以要把绑定函数放在最后
+    initPkg_Point_PointList_insertFunc();
+}
+function initPkg_Point_PointPanel() {
+    initPkg_Point_PointPanel_insertDom();
+    initPkg_Point_PointPanel_insertFunc();
+}
+function initPkg_Point_PointPanel_insertDom() {
+	let a = document.createElement("div");
+	a.className = "point__panel";
+    a.innerHTML = `
+            <div class="panel__wrap">
+                <div id="panel__update" class="panel__cell">更新积分</div>
+                <div id="panel__pointlist" class="panel__cell">积分榜</div>
+				<div id="panel__exchange" class="panel__cell">兑换物品</div>
+				<div id="panel__record" class="panel__cell">兑换记录</div>
+				<div id="panel__rules" class="panel__cell">积分规则</div>
+			</div>
+			<div class="panel__triangle"></div>
+    `;
+	
+	let b = document.getElementsByClassName("PlayerToolbar-Wealth")[0];
+	b.insertBefore(a, b.childNodes[0]);
+	
+}
+
+function initPkg_Point_PointPanel_insertFunc() {
+    document.getElementById("panel__update").addEventListener("click",  () => {
+        closePointPanel();
+        updateUserPoint();
+    });
+    document.getElementById("panel__pointlist").addEventListener("click",  () => {
+        closePointPanel();
+        initPkg_Point_PointList();
+    });
+    document.getElementById("panel__exchange").addEventListener("click", async () => {
+        closePointPanel();
+        initPkg_Point_PointExchange();
+    });
+    document.getElementById("panel__record").addEventListener("click", async () => {
+        closePointPanel();
+        initPkg_Point_PointRecord();
+    });
+    document.getElementById("panel__rules").addEventListener("click",  async () => {
+        closePointPanel();
+        openPage("https://qianjiachun.github.io/DouyuEx/rules", true);
+    });
+}
+
+function closePointPanel() {
+    document.getElementsByClassName("point__panel")[0].style.display = "none";
+}
+
+let currentOffset = 0;
+let maxOffset = 99999;
+function initPkg_Point_PointRecord() {
+    currentOffset = 0;
+    initPkg_Point_PointRecord_insertDom();
+    initPkg_Point_PointRecord_insertFunc();
+}
+function initPkg_Point_PointRecord_insertDom() {
+    renderRecordWrap();
+    renderRecord(currentOffset);
+}
+
+function initPkg_Point_PointRecord_insertFunc() {
+    document.getElementsByClassName("record__close")[0].onclick = () => {
+        let a = document.getElementById("ex-record");
+        if (a !== null) {
+            a.remove();
+        }
+    }
+    document.getElementsByClassName("record__prev")[0].onclick = () => {
+        if (currentOffset < 10) {
+            showMessage("【积分系统】兑换系统已到首页", "error");
+            return;
+        }
+        currentOffset = currentOffset - 10;
+        renderRecord(currentOffset);
+    }
+    document.getElementsByClassName("record__next")[0].onclick = () => {
+        if (currentOffset >= maxOffset) {
+            showMessage("【积分系统】兑换系统已到尾页", "error");
+            return;
+        }
+        currentOffset = currentOffset + 10;
+        renderRecord(currentOffset);
+    }
+}
+
+
+function renderRecordWrap() {
+    if (document.getElementById("ex-record") !== null) {
+        return;
+    }
+    let a = document.createElement("div");
+    a.id = "ex-record";
+    
+    let html = `
+    <div class="record__close">X</div>
+    <div class="records__wrap"></div>
+    <div class="record__pagenav">
+        <div class="record__prev">上一页</div>
+        <div class="record__next">下一页</div>
+    </div>
+    `;
+    a.innerHTML = html;
+    let b = document.getElementsByClassName("PlayerToolbar-Wealth")[0];
+    b.insertBefore(a, b.childNodes[0]);
+}
+
+async function renderRecord(offset) {
+    let dom = document.getElementsByClassName("records__wrap");
+    if (dom.length <= 0) {
+        return;
+    }
+    dom[0].innerHTML = "";
+
+
+    let recordList = await getExchangeRecord(dyToken, offset);
+    if (recordList.error != "0") {
+        showMessage("【积分系统】" + recordList.msg, "error");
+        return;
+    }
+    if (recordList.data == null) {
+        maxOffset = currentOffset;
+        showMessage("【积分系统】无兑换记录", "error");
+        return;
+    }
+    
+    
+
+    let html = "";
+
+
+    for (let i = 0; i < recordList.data.length; i++) {
+        html += `
+        <div class="record__wrap">
+            <div class="record__left">
+                <div class="record__name">（${ recordList.data[i].status=="1"?"已发货":"未发货" }）${ recordList.data[i].item_name }</div>
+                <div class="record__updatetime">${ recordList.data[i].update_time }</div>
+            </div>
+            <div class="record__right">
+                <div class="record__price">💗${ recordList.data[i].price }</div>
+            </div>
+        </div>
+        `;
+    }
+
+    dom[0].innerHTML = html;
+
+    bindRecord(recordList);
+}
+
+function bindRecord(recordJson) {
+    let dom = document.getElementsByClassName("record__wrap");
+    for (let i = 0; i < dom.length; i++) {
+        dom[i].onclick = () => {
+            PostbirdAlertBox.alert({
+                'title': '备注信息',
+                'content': recordJson.data[i].info,
+                'okBtn': '确定',
+                'contentColor': 'rgb(51,51,51)',
+            });
+        }
+    }
 }
 let videoPlayerArr = [];
 
@@ -3746,7 +4332,7 @@ function PopupPlayer_insertPrompt() {
     a.className = "postbird-box-container";
     a.id = "popup-player__prompt"
     html += '<div class="postbird-box-dialog">';
-    html += '<div class="postbird-box-content">';
+    html += '<div style="min-height:170px" class="postbird-box-content">';
     html += '<div class="postbird-box-header">';
     html += '<span class="postbird-box-title"><span>请输入直播间地址：</span></span>';
     html += '</div>'; // header
@@ -3784,8 +4370,7 @@ function initPkg_PopupPlayer_Func() {
                         createNewVideo(videoPlayerArr.length, rid, "Bilibili");
                     });
                 } else if (roomUrl.indexOf("huya.com") != -1) {
-                    // 2020年6月13日11:21:18 暂时移除对虎牙的支持
-                    // createNewVideo(videoPlayerArr.length, roomUrl, "Huya");
+                    createNewVideo(videoPlayerArr.length, roomUrl, "Huya");
                 }
             } else {
                 createNewVideo_iframe(videoPlayerArr.length, roomUrl);
@@ -3814,8 +4399,8 @@ function createNewVideo(id, rid, platform) {
             createNewVideo_Bilibili(id, rid);
             break;
         case "Huya":
-            // let a = String(rid).split("/");
-            // createNewVideo_Huya(id, rid, a[a.length - 1]);
+            let a = String(rid).split("/");
+            createNewVideo_Huya(id, rid, a[a.length - 1]);
             break;
         default:
             createNewVideo_Douyu(id, rid);
@@ -4079,6 +4664,93 @@ function setElementFunc_Bilibili(id, rid) {
 }
 
 
+// Huya
+function createNewVideo_Huya(id, rid, rname){
+    getRealLive_Huya(rid, "1", (lurl, msg) => {
+        if (lurl != "" || lurl != null) {
+            if (msg != "") {
+                showMessage(msg, "error");
+                return;
+            }
+            let a = document.createElement("div");
+            let html = "";
+            a.id = "videoDiv" + String(id);
+            a.rid = rid;
+            a.className = "videoDiv";
+            html += "<div class='videoInfo' id='videoInfo" + String(id) + "'><a title='复制直播流地址'><span class='videoRID' id='videoRID" + String(id) + "' style='color:white'>" + "Huya - " + rname + "</span></a>";
+            html += "<select class='videoQn' id='videoQn" + String(id) + "'><option value='1'>流畅</option><option value='2'>超清</option><option value='3'>蓝光4M</option><option value='4'>原画</option></select>";
+            // html += "<select class='videoCDN' id='videoCDN" + String(id) + "'><option value='1'>主线路</option><option value='2'>备用线路1</option><option value='3'>备用线路2</option></select>";
+            html += "<a><div class='videoClose' id='videoClose" + String(id) + "'>X</div></a>"
+            html += "</div>";
+            html += "<video controls='controls' class='videoPlayer' id='videoPlayer" + String(id) + "'></video><div class='videoScale' id='videoScale" + String(id) + "'></div>";
+            a.innerHTML = html;
+            let b = document.getElementsByClassName("layout-Main")[0];
+            b.insertBefore(a, b.childNodes[0]);
+            setElementDrag(id);
+            setElementResize(id);
+            setElementFunc_Huya(id, rid);
+            setElementVideo(id, lurl);
+        }
+    });
+}
+
+function setElementFunc_Huya(id, rid) {
+    let box = document.getElementById("videoDiv" + String(id));
+    let videoPlayer = document.getElementById("videoPlayer" + String(id));
+    let info = document.getElementById("videoInfo" + String(id));
+    let scale = document.getElementById("videoScale" + String(id));
+    videoPlayer.onclick = function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        if (scale.style.display != "block") {
+            scale.style.display = "block";
+            info.style.display = "block";
+        } else {
+            scale.style.display = "none";
+            info.style.display = "none";
+        }
+        for (let i = 0; i < videoPlayerArr.length; i++) {
+            let box = document.getElementById("videoDiv" + String(i));
+            if (box != null) {
+                if (i == id) {
+                    box.style.zIndex = 7778;
+                } else {
+                    box.style.zIndex = 7777;
+                }
+            }
+        }
+    }
+    let videoQn = document.getElementById("videoQn" + String(id));
+    // let videoCDN = document.getElementById("videoCDN" + String(id));
+    let videoClose = document.getElementById("videoClose" + String(id));
+    videoQn.onchange = function() {
+        getRealLive_Huya(rid, videoQn.value, (lurl, msg) => {
+            if (msg != "") {
+                showMessage(msg, "error");
+                return;
+            }
+            videoPlayerArr[id].destroy();
+            setElementVideo(id, lurl);
+        })
+    }
+    videoClose.onclick = function() {
+        box.remove();
+    }
+
+
+    let videoRID = document.getElementById("videoRID" + String(id));
+    videoRID.onclick = function() {
+        getRealLive_Huya(rid, videoQn.value, (lurl, msg) => {
+            if (msg != "") {
+                showMessage(msg, "error");
+                return;
+            }
+            GM_setClipboard(lurl);
+            showMessage("复制成功", "success");
+        })
+    }
+}
+
 // iframe
 function createNewVideo_iframe(id, url) {
     if (String(url).indexOf("douyu.com") == -1) {
@@ -4185,10 +4857,19 @@ function initPkg_RealAudience_Dom() {
 }
 
 function initPkg_RealAudience_Func() {
-	document.getElementsByClassName("AnchorAnnounce")[0].addEventListener("mouseover", function() {document.querySelector(".AnchorAnnounce > h3").style.display="block"});
-	document.getElementsByClassName("AnchorAnnounce")[0].addEventListener("mouseout", function() {document.querySelector(".AnchorAnnounce > h3").style.display="none"});
+	let h_timeout;
+	document.getElementsByClassName("AnchorAnnounce")[0].addEventListener("mouseover", () => {
+		h_timeout = setTimeout(() => {
+			document.querySelector(".AnchorAnnounce > h3").style.display="block";
+		}, 500);
+		
+	});
+	document.getElementsByClassName("AnchorAnnounce")[0].addEventListener("mouseout", () => {
+		clearTimeout(h_timeout);
+		document.querySelector(".AnchorAnnounce > h3").style.display="none";
+	});
 	document.getElementsByClassName("real-audience")[0].addEventListener("click", function() {
-		openPage("https://www.xiaohulu.com/liveParticularsIndex/2/" + rid, true);
+		openPage("https://xian.xiaohulu.com/anchor2/details?plat=2&roomid=" + rid, true);
 	})
 }
 
@@ -4486,11 +5167,13 @@ function initPkg_RemoveAD() {
 
 function removeAD() {
     StyleHook_set("Ex_Style_RemoveAD", `
-    .WXTipsBox,.igl_bg-b0724a,.closure-ab91fb,.VideoAboveVivoAd,.pwd-990896,.css-widgetWrapper-EdVVC,.watermark-442a18,.FollowGuide-FadeOut,.MatchSystemChatRoomEntry-roomTabs,.FansMedalDialog-normal,.GameLauncher,.recommendAD-54569e,.recommendApp-0e23eb,.Title-ad,.Bottom-ad,.SignBarrage,.corner-ad-495ade,.SignBaseComponent-sign-ad,.SuperFansBubble,.is-noLogin,.PlayerToolbar-signCont,#js-widget,.Frawdroom,.HeaderGif-right,.HeaderGif-left,.liveos-workspace{display:none !important;} /* 左侧悬浮广告 */
+    .DropMenuList-ad,.DropPane-ad,.WXTipsBox,.igl_bg-b0724a,.closure-ab91fb,.VideoAboveVivoAd,.pwd-990896,.css-widgetWrapper-EdVVC,.watermark-442a18,.FollowGuide-FadeOut,.MatchSystemChatRoomEntry-roomTabs,.FansMedalDialog-normal,.GameLauncher,.recommendAD-54569e,.recommendApp-0e23eb,.Title-ad,.Bottom-ad,.SignBarrage,.corner-ad-495ade,.SignBaseComponent-sign-ad,.SuperFansBubble,.is-noLogin,.PlayerToolbar-signCont,#js-widget,.Frawdroom,.HeaderGif-right,.HeaderGif-left,.liveos-workspace{display:none !important;} /* 左侧悬浮广告 */
     .Barrage-topFloater{z-index:999}
+    .danmuAuthor-3d7b4a, .danmuContent-25f266{overflow: initial}
+    .dy-Modal-mask{display:none !important;}
+    .BattleShipTips{display:none !important;}
     `);
 }
-
 function removeChatLimit() {
     let a;
     
@@ -4510,20 +5193,14 @@ function initPkg_Sign() {
 }
 
 function initPkg_Sign_Func() {
-	document.getElementsByClassName("ex-sign")[0].addEventListener("click", function() {
-		// 这里挂载每个子模块的函数入口
-		// 入口即为调用
-		initPkg_Sign_Yuba(); // 鱼吧签到
-		initPkg_Sign_Client();
-		initPkg_Sign_Motorcade();
-		initPkg_Sign_Room();
-		// initPkg_Sign_Ad_666(); // 此处移动到鱼塘鱼丸领取中去以免观看冲突
-		initPkg_Sign_Ad_Sign();
-		initPkg_Sign_Ad_FishPond();
-		// initPkg_Sign_Aoligei();
-		// initPkg_Sign_Ad_Yuba();
-		initPkg_Sign_Chengxiao();
-	})
+	let dom = new CClick(document.getElementsByClassName("ex-sign")[0]);
+	dom.click(() => {
+		initPkg_Sign_Main(false); // 只签到开播的
+	});
+	dom.longClick(() => {
+		initPkg_Sign_Main(true); // 全部签到
+	});
+	
 }
 function initPkg_Sign_Dom() {
 	Sign_insertIcon();
@@ -4537,6 +5214,23 @@ function Sign_insertIcon() {
 	
 }
 
+function initPkg_Sign_Main(isAll) {
+		// 这里挂载每个子模块的函数入口
+		// 入口即为调用
+		initPkg_Sign_Yuba(); // 鱼吧签到
+		initPkg_Sign_Client();
+		initPkg_Sign_Motorcade();
+		initPkg_Sign_Room(isAll);
+		// initPkg_Sign_Ad_666(); // 此处移动到鱼塘鱼丸领取中去以免观看冲突
+		initPkg_Sign_Ad_Sign();
+		initPkg_Sign_Ad_FishPond();
+		// initPkg_Sign_Aoligei();
+		// initPkg_Sign_Ad_Yuba();
+		initPkg_Sign_Chengxiao();
+		// initPkg_Sign_Ad_Novel();
+		initPkg_Sign_Changzheng();
+		initPkg_Sign_TV();
+}
 function initPkg_Sign_Ad_666() {
 	getFishBall_Ad_666();
 }
@@ -4995,6 +5689,94 @@ function getFishBall_Ad_Yuba_finish(posid_Ad_Yuba, token, uid, mid, infoBack) {
     })
 }
 
+const ACTIVITY_DAY_ID = "393";
+
+function initPkg_Sign_Changzheng() {
+    getChangzheng();
+}
+
+async function getChangzheng() {
+    let ret = await signChangzheng();
+    if (ret.error == "0") {
+        showMessage("【长征签到】签到完毕", "success");
+
+    } else {
+        showMessage("【长征签到】" + ret.msg, "warning");
+    }
+
+    ret = await getChangzhengBoxStatus_Day();
+    if (ret.error == "0") {
+        for (let i = 0; i < ret.data.freeCount; i++) {
+            let ret2 = await getChangzhengBox_Day();
+            if (ret2.error == "0") {
+                showMessage("【长征签到】礼盒开启：" + ret2.data.giftName, "success");
+            }
+        }
+    }
+    
+}
+
+function signChangzheng() {
+    return new Promise(resolve => {
+        fetch("https://www.douyu.com/japi/carnival/nc/signAct/signIn", {
+            method: 'POST',
+            mode: 'no-cors',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: 'token=' + dyToken + "&signAlias=" + "XSDXZC"
+        }).then(res => {
+            return res.json();
+        }).then(ret => {
+            resolve(ret);
+        })
+    })
+}
+
+function signChangzheng() {
+    return new Promise(resolve => {
+        fetch("https://www.douyu.com/japi/carnival/nc/signAct/signIn", {
+            method: 'POST',
+            mode: 'no-cors',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: 'token=' + dyToken + "&signAlias=" + "XSDXZC"
+        }).then(res => {
+            return res.json();
+        }).then(ret => {
+            resolve(ret);
+        })
+    })
+}
+
+function getChangzhengBox_Day() {
+    return new Promise(resolve => {
+        fetch("https://www.douyu.com/japi/carnival/nc/lottery/jackpot", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json;charset=UTF-8'},
+            body: `{"activityId":"${ ACTIVITY_DAY_ID }","token":"${ dyToken }"}`
+        }).then(res => {
+            return res.json();
+        }).then(ret => {
+            resolve(ret);
+        })
+    })
+}
+
+function getChangzhengBoxStatus_Day() {
+    return new Promise(resolve => {
+        fetch("https://www.douyu.com/japi/carnival/nc/lottery/remaining?activityId=" + ACTIVITY_DAY_ID, {
+            method: 'GET',
+            mode: 'no-cors',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json;charset=UTF-8'},
+        }).then(res => {
+            return res.json();
+        }).then(ret => {
+            resolve(ret);
+        })
+    })
+}
+
 function initPkg_Sign_Chengxiao() {
     signChengxiao();
 }
@@ -5015,7 +5797,6 @@ function signChengxiao() {
         }
     })
 }
-
 function initPkg_Sign_Client() {
 	signClient();
 }
@@ -5198,10 +5979,10 @@ function getMotorcadeID(tinyid, a2, identifier) {
         });
     })
 }
-function initPkg_Sign_Room() {
-	signAllRoom();
+function initPkg_Sign_Room(isAll) {
+	signAllRoom(isAll);
 }
-function signAllRoom() {
+function signAllRoom(isAll) {
     // 1. get page counts(777)
     // 2. for in all pages
     // 3. sign each room
@@ -5227,13 +6008,19 @@ function signAllRoom() {
             }).then(ret => {
                 let roomCount = Number(ret.data.list.length);
                 for (let i = 0; i < roomCount; i++) {
-                    if (ret.data.list[i].show_status == "1") {
+                    if (isAll == false) {
+                        if (ret.data.list[i].show_status == "1") {
+                            signRoom(ret.data.list[i].room_id);
+                            signedCount++;
+                        }
+                    } else {
                         signRoom(ret.data.list[i].room_id);
                         signedCount++;
                     }
+                    
                     if (nowPage == pageCount && i == roomCount - 1) {
                         let rest = Number(ret.data.total) - signedCount;
-                        showMessage("【房间签到】" + String(signedCount) + "个已开播房间签到已完成，" + String(rest) + "个房间未开播", "success");
+                        showMessage("【房间签到】" + String(signedCount) + "个房间签到已完成，" + String(rest) + "个房间未签到", "success");
                     }
                 }
             }).catch(err => {
@@ -5249,18 +6036,42 @@ function signAllRoom() {
 function signRoom(r) {
 	GM_xmlhttpRequest({
 		method: "POST",
-		url: "https://apiv2.douyucdn.cn/japi/roomuserlevel/apinc/checkIn",
-		data: 'rid=' + r + '&ctn=' + getCCN(),
+		url: "https://apiv2.douyucdn.cn/japi/roomuserlevel/apinc/checkIn?client_sys=android",
+		data: 'rid=' + r,
 		responseType: "json",
 		headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'token': dyToken,
-            'cookie': document.cookie
+            'aid': 'android1'
 		},
 		onload: function(response) {
         }
 	});
 }
+function initPkg_Sign_TV() {
+	signTV();
+}
+
+function signTV() {
+    let did = window.btoa(getDyDid());
+	GM_xmlhttpRequest({
+		method: "GET",
+		url: "https://apitv.douyucdn.cn/user/sign/index?token=" + dyToken + "&client_sys=android",
+		responseType: "json",
+		headers: {
+			'User-Device': did
+		},
+		onload: function(response) {
+			let ret = response.response;
+			if (ret.error == "0") {
+                showMessage("【电视端】签到成功！获得100鱼丸", "success");
+			} else {
+                showMessage("【电视端】" + ret.data.msg, "warning");
+			}
+		}
+	});
+}
+
 let signedYuba = 0;
 let totalYuba = 0;
 let doneYuba = 0;
@@ -5385,7 +6196,7 @@ function initPkg_Statistics() {
 // 版本号
 // 格式 yyyy.MM.dd.**
 // var curVersion = "2020.01.12.01";
-var curVersion = "2020.06.22.01"
+var curVersion = "2020.07.18.02"
 function initPkg_Update() {
 	initPkg_Update_Dom();
 	initPkg_Update_Func();
@@ -5446,14 +6257,85 @@ function Update_showTip(a) {
 		d.style.display = "none";
 	}
 }
+/* 
+    CClick
+    单双击/长按不冲突的解决方案 
+    By: 小淳
+
+    调用方法:
+    let a = new CClick(document.getElementById(""));
+    a.click((e) => {// TODO});
+    a.dbClick((e) => {// TODO});
+    a.longClick((e) => {// TODO});
+*/
+class CClick {
+    constructor(element) {
+        const CONST_LONG_TIME = 700; // 长按多少ms执行
+        const CONST_DOUBLE_TIME = 250; // 双击的间隔
+        this.func_click = null;
+        this.func_dbClick = null;
+        this.func_longClick = null;
+        let isLong = false;
+        let timer_long;
+        let clickTimes = 0;
+        let timer_db;
+        element.onmousedown = (event) => {
+            if (event.button !== 0) {
+                return;
+            }
+            isLong = false;
+            timer_long = setTimeout(() => {
+                isLong = true;
+                if (this.func_longClick !== null) {
+                    this.func_longClick(event);
+                }
+            }, CONST_LONG_TIME);
+        };
+        element.onmouseup = (event) => {
+            if (event.button !== 0) {
+                return;
+            }
+            if (isLong == false) {
+                clearTimeout(timer_long);
+                clickTimes++;
+                if (clickTimes >= 2) {
+                    clearTimeout(timer_db);
+                    clickTimes = 0;
+                    if (this.func_dbClick !== null) {
+                        this.func_dbClick(event);
+                    }
+                    return;
+                }
+                timer_db = setTimeout(() => {
+                    clickTimes = 0;
+                    if (this.func_click !== null) {
+                        this.func_click(event);
+                    }
+                }, CONST_DOUBLE_TIME);
+            }
+        };
+    }
+    click(callback) {
+        this.func_click = callback;
+    }
+    dbClick(callback) {
+        this.func_dbClick = callback;
+    }
+    longClick(callback) {
+        this.func_longClick = callback;
+    }
+}
+
+
 class DomHook {
-    constructor(selector, callback) {
+    constructor(selector, isSubtree, callback) {
         this.selector = selector;
+        this.isSubtree = isSubtree;
         let targetNode = document.querySelector(this.selector);
         let observer = new MutationObserver(function(mutations) {
             callback(mutations);
         });
-        observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
+        observer.observe(targetNode, { attributes: true, childList: true, subtree: this.isSubtree });
     }
 }
 /*
@@ -5464,6 +6346,56 @@ var hexcase=0;var b64pad="";var chrsz=8;function hex_md5(s){return binl2hex(core
     Notice.js
 */
 (function webpackUniversalModuleDefinition(root,factory){if(typeof exports==='object'&&typeof module==='object')module.exports=factory();else if(typeof define==='function'&&define.amd)define("NoticeJs",[],factory);else if(typeof exports==='object')exports["NoticeJs"]=factory();else root["NoticeJs"]=factory()})(typeof self!=='undefined'?self:this,function(){return(function(modules){var installedModules={};function __webpack_require__(moduleId){if(installedModules[moduleId]){return installedModules[moduleId].exports}var module=installedModules[moduleId]={i:moduleId,l:false,exports:{}};modules[moduleId].call(module.exports,module,module.exports,__webpack_require__);module.l=true;return module.exports}__webpack_require__.m=modules;__webpack_require__.c=installedModules;__webpack_require__.d=function(exports,name,getter){if(!__webpack_require__.o(exports,name)){Object.defineProperty(exports,name,{configurable:false,enumerable:true,get:getter})}};__webpack_require__.n=function(module){var getter=module&&module.__esModule?function getDefault(){return module['default']}:function getModuleExports(){return module};__webpack_require__.d(getter,'a',getter);return getter};__webpack_require__.o=function(object,property){return Object.prototype.hasOwnProperty.call(object,property)};__webpack_require__.p="dist/";return __webpack_require__(__webpack_require__.s=2)})([(function(module,exports,__webpack_require__){"use strict";Object.defineProperty(exports,"__esModule",{value:true});var noticeJsModalClassName=exports.noticeJsModalClassName='noticejs-modal';var closeAnimation=exports.closeAnimation='noticejs-fadeOut';var Defaults=exports.Defaults={title:'',text:'',type:'success',position:'topRight',timeout:30,progressBar:true,closeWith:['button'],animation:null,modal:false,scroll:{maxHeight:300,showOnHover:true},rtl:false,callbacks:{beforeShow:[],onShow:[],afterShow:[],onClose:[],afterClose:[],onClick:[],onHover:[],onTemplate:[]}}}),(function(module,exports,__webpack_require__){"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.appendNoticeJs=exports.addListener=exports.CloseItem=exports.AddModal=undefined;exports.getCallback=getCallback;var _api=__webpack_require__(0);var API=_interopRequireWildcard(_api);function _interopRequireWildcard(obj){if(obj&&obj.__esModule){return obj}else{var newObj={};if(obj!=null){for(var key in obj){if(Object.prototype.hasOwnProperty.call(obj,key))newObj[key]=obj[key]}}newObj.default=obj;return newObj}}var options=API.Defaults;function getCallback(ref,eventName){if(ref.callbacks.hasOwnProperty(eventName)){ref.callbacks[eventName].forEach(function(cb){if(typeof cb==='function'){cb.apply(ref)}})}}var AddModal=exports.AddModal=function AddModal(){if(document.getElementsByClassName(API.noticeJsModalClassName).length<=0){var element=document.createElement('div');element.classList.add(API.noticeJsModalClassName);element.classList.add('noticejs-modal-open');document.body.appendChild(element);setTimeout(function(){element.className=API.noticeJsModalClassName},200)}};var CloseItem=exports.CloseItem=function CloseItem(item){getCallback(options,'onClose');if(options.animation!==null&&options.animation.close!==null){item.className+=' '+options.animation.close}setTimeout(function(){item.remove()},200);if(options.modal===true&&document.querySelectorAll("[noticejs-modal='true']").length>=1){document.querySelector('.noticejs-modal').className+=' noticejs-modal-close';setTimeout(function(){document.querySelector('.noticejs-modal').remove()},500)}var position='.'+item.closest('.noticejs').className.replace('noticejs','').trim();setTimeout(function(){if(document.querySelectorAll(position+' .item').length<=0){let p=document.querySelector(position);if(p!=null){p.remove()}}},500)};var addListener=exports.addListener=function addListener(item){if(options.closeWith.includes('button')){item.querySelector('.close').addEventListener('click',function(){CloseItem(item)})}if(options.closeWith.includes('click')){item.style.cursor='pointer';item.addEventListener('click',function(e){if(e.target.className!=='close'){getCallback(options,'onClick');CloseItem(item)}})}else{item.addEventListener('click',function(e){if(e.target.className!=='close'){getCallback(options,'onClick')}})}item.addEventListener('mouseover',function(){getCallback(options,'onHover')})};var appendNoticeJs=exports.appendNoticeJs=function appendNoticeJs(noticeJsHeader,noticeJsBody,noticeJsProgressBar){var target_class='.noticejs-'+options.position;var noticeJsItem=document.createElement('div');noticeJsItem.classList.add('item');noticeJsItem.classList.add(options.type);if(options.rtl===true){noticeJsItem.classList.add('noticejs-rtl')}if(noticeJsHeader&&noticeJsHeader!==''){noticeJsItem.appendChild(noticeJsHeader)}noticeJsItem.appendChild(noticeJsBody);if(noticeJsProgressBar&&noticeJsProgressBar!==''){noticeJsItem.appendChild(noticeJsProgressBar)}if(['top','bottom'].includes(options.position)){document.querySelector(target_class).innerHTML=''}if(options.animation!==null&&options.animation.open!==null){noticeJsItem.className+=' '+options.animation.open}if(options.modal===true){noticeJsItem.setAttribute('noticejs-modal','true');AddModal()}addListener(noticeJsItem,options.closeWith);getCallback(options,'beforeShow');getCallback(options,'onShow');document.querySelector(target_class).appendChild(noticeJsItem);getCallback(options,'afterShow');return noticeJsItem}}),(function(module,exports,__webpack_require__){"use strict";Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor}}();var _noticejs=__webpack_require__(3);var _noticejs2=_interopRequireDefault(_noticejs);var _api=__webpack_require__(0);var API=_interopRequireWildcard(_api);var _components=__webpack_require__(4);var _helpers=__webpack_require__(1);var helper=_interopRequireWildcard(_helpers);function _interopRequireWildcard(obj){if(obj&&obj.__esModule){return obj}else{var newObj={};if(obj!=null){for(var key in obj){if(Object.prototype.hasOwnProperty.call(obj,key))newObj[key]=obj[key]}}newObj.default=obj;return newObj}}function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}var NoticeJs=function(){function NoticeJs(){var options=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{};_classCallCheck(this,NoticeJs);this.options=Object.assign(API.Defaults,options);this.component=new _components.Components();this.on('beforeShow',this.options.callbacks.beforeShow);this.on('onShow',this.options.callbacks.onShow);this.on('afterShow',this.options.callbacks.afterShow);this.on('onClose',this.options.callbacks.onClose);this.on('afterClose',this.options.callbacks.afterClose);this.on('onClick',this.options.callbacks.onClick);this.on('onHover',this.options.callbacks.onHover);return this}_createClass(NoticeJs,[{key:'show',value:function show(){var container=this.component.createContainer();if(document.querySelector('.noticejs-'+this.options.position)===null){document.body.appendChild(container)}var noticeJsHeader=void 0;var noticeJsBody=void 0;var noticeJsProgressBar=void 0;noticeJsHeader=this.component.createHeader(this.options.title,this.options.closeWith);noticeJsBody=this.component.createBody(this.options.text);if(this.options.progressBar===true){noticeJsProgressBar=this.component.createProgressBar()}var noticeJs=helper.appendNoticeJs(noticeJsHeader,noticeJsBody,noticeJsProgressBar);return noticeJs}},{key:'on',value:function on(eventName){var cb=arguments.length>1&&arguments[1]!==undefined?arguments[1]:function(){};if(typeof cb==='function'&&this.options.callbacks.hasOwnProperty(eventName)){this.options.callbacks[eventName].push(cb)}return this}}]);return NoticeJs}();exports.default=NoticeJs;module.exports=exports['default']}),(function(module,exports){}),(function(module,exports,__webpack_require__){"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.Components=undefined;var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor}}();var _api=__webpack_require__(0);var API=_interopRequireWildcard(_api);var _helpers=__webpack_require__(1);var helper=_interopRequireWildcard(_helpers);function _interopRequireWildcard(obj){if(obj&&obj.__esModule){return obj}else{var newObj={};if(obj!=null){for(var key in obj){if(Object.prototype.hasOwnProperty.call(obj,key))newObj[key]=obj[key]}}newObj.default=obj;return newObj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}var options=API.Defaults;var Components=exports.Components=function(){function Components(){_classCallCheck(this,Components)}_createClass(Components,[{key:'createContainer',value:function createContainer(){var element_class='noticejs-'+options.position;var element=document.createElement('div');element.classList.add('noticejs');element.classList.add(element_class);return element}},{key:'createHeader',value:function createHeader(){var element=void 0;if(options.title&&options.title!==''){element=document.createElement('div');element.setAttribute('class','noticejs-heading');element.textContent=options.title}if(options.closeWith.includes('button')){var close=document.createElement('div');close.setAttribute('class','close');close.innerHTML='&times;';if(element){element.appendChild(close)}else{element=close}}return element}},{key:'createBody',value:function createBody(){var element=document.createElement('div');element.setAttribute('class','noticejs-body');var content=document.createElement('div');content.setAttribute('class','noticejs-content');content.innerHTML=options.text;element.appendChild(content);if(options.scroll!==null&&options.scroll.maxHeight!==''){element.style.overflowY='auto';element.style.maxHeight=options.scroll.maxHeight+'px';if(options.scroll.showOnHover===true){element.style.visibility='hidden'}}return element}},{key:'createProgressBar',value:function createProgressBar(){var element=document.createElement('div');element.setAttribute('class','noticejs-progressbar');var bar=document.createElement('div');bar.setAttribute('class','noticejs-bar');element.appendChild(bar);if(options.progressBar===true&&typeof options.timeout!=='boolean'&&options.timeout!==false){var frame=function frame(){if(width<=0){clearInterval(id);var item=element.closest('div.item');if(options.animation!==null&&options.animation.close!==null){item.className=item.className.replace(new RegExp('(?:^|\\s)'+options.animation.open+'(?:\\s|$)'),' ');item.className+=' '+options.animation.close;var close_time=parseInt(options.timeout)+500;setTimeout(function(){helper.CloseItem(item)},close_time)}else{helper.CloseItem(item)}}else{width--;bar.style.width=width+'%'}};var width=100;var id=setInterval(frame,options.timeout)}return element}}]);return Components}()})])});
+/*
+    二次封装postbirdAlertBox，用于DouyuEx内部使用
+    By: 小淳
+*/
+
+function showAlert(text) {
+    PostbirdAlertBox.alert({
+        'title': '提示',
+        'content': text,
+        'okBtn': '确定',
+        'contentColor': 'rgb(51,51,51)',
+    });
+}
+
+function showConfirm(text, callback_confirm, callback_cancel) {
+    PostbirdAlertBox.confirm({
+        'title': '提示',
+        'content': text,
+        'okBtn': '确定',
+        'contentColor': 'rgb(51,51,51)',
+        'onConfirm': function () {
+            callback_confirm();
+        },
+        'onCancel': function () {
+            callback_cancel();
+        }
+    });
+}
+
+function showPrompt(text, callback_confirm, callback_cancel) {
+    PostbirdAlertBox.prompt({
+        'title': text,
+        'okBtn': '确定',
+        onConfirm: function (data) {
+            callback_confirm(data);
+        },
+        onCancel: function (data) {
+            callback_cancel(data);
+        },
+    });
+}
+/**
+ * PostbirdAlertBox.js
+ * -    原生javascript弹框插件
+ * Author:  Postbird - http://www.ptbird.cn
+ * License: MIT
+ * Date:    2017-09-23
+ */
+var PostbirdAlertBox={containerClass:"postbird-box-container active",box:null,textTemplate:{title:"提示信息",content:"提示内容",okBtn:"好的",cancelBtn:"取消",contentColor:"#000000",okBtnColor:"#0e90d2",promptTitle:"请输入内容",promptOkBtn:"确认",},getAlertTemplate:function(){var temp='<div class="postbird-box-dialog">'+'<div class="postbird-box-content">'+'<div class="postbird-box-header">'+'<span class="postbird-box-close-btn">×</span>'+'<span class="postbird-box-title">'+"<span >"+this.textTemplate.title+"</span>"+"</span>"+"</div>"+'<div class="postbird-box-text">'+'<span style="color:'+this.textTemplate.contentColor+';">'+this.textTemplate.content+"</span>"+"</div>"+'<div class="postbird-box-footer">'+'<button class="btn-footer btn-block-footer btn-footer-ok" style="color:'+this.textTemplate.okBtnColor+';">'+this.textTemplate.okBtn+"</button>"+"</div>"+"</div>"+"</div>";return temp},getConfirmTemplate:function(){return'<div class="postbird-box-container">'+'<div class="postbird-box-dialog">'+'<div class="postbird-box-content">'+'<div class="postbird-box-header">'+'<span class="postbird-box-close-btn">×</span>'+'<span class="postbird-box-title">'+"<span >"+this.textTemplate.title+"</span>"+"</span>"+"</div>"+'<div class="postbird-box-text">'+'<span style="color:'+this.textTemplate.contentColor+';">'+this.textTemplate.content+"?</span>"+"</div>"+'<div class="postbird-box-footer">'+'<button class="btn-footer btn-left-footer btn-footer-cancel" style="color:'+this.textTemplate.cancelBtnColor+';">'+this.textTemplate.cancelBtn+"</button>"+'<button class="btn-footer btn-right-footer btn-footer-ok"  style="color:'+this.textTemplate.okBtnColor+';">'+this.textTemplate.okBtn+"</button>"+"</div>"+"</div>"+"</div>"+"</div>"},getPromptTemplate:function(){return'<div class="postbird-box-container">'+'<div class="postbird-box-dialog">'+'<div class="postbird-box-content">'+'<div class="postbird-box-header">'+'<span class="postbird-box-close-btn">×</span>'+'<span class="postbird-box-title">'+"<span >"+this.textTemplate.title+"</span>"+"</span>"+"</div>"+'<div class="postbird-box-text">'+'<input type="text" class="postbird-prompt-input" autofocus="true" >'+"</div>"+'<div class="postbird-box-footer">'+'<button class="btn-footer btn-left-footer btn-footer-cancel" style="color:'+this.textTemplate.cancelBtnColor+';">'+this.textTemplate.cancelBtn+"</button>"+'<button class="btn-footer btn-right-footer btn-footer-ok"  style="color:'+this.textTemplate.okBtnColor+';">'+this.textTemplate.okBtn+"</button>"+"</div>"+"</div>"+"</div>"+"</div>"},alert:function(opt){this.textTemplate.title=opt.title||this.textTemplate.title;this.textTemplate.content=opt.content||this.textTemplate.content;this.textTemplate.okBtn=opt.okBtn||this.textTemplate.okBtn;this.textTemplate.okBtnColor=opt.okBtnColor||this.textTemplate.okBtnColor;this.textTemplate.contentColor=opt.contentColor||this.textTemplate.contentColor;var box=document.createElement("div"),_this=this;box.className=this.containerClass;box.innerHTML=this.getAlertTemplate();this.box=box;document.body.appendChild(this.box);var btn=document.getElementsByClassName("btn-footer-ok");btn[btn.length-1].focus();btn[btn.length-1].onclick=function(){if(opt.onConfirm){opt.onConfirm()}_this.removeBox()}},confirm:function(opt){this.textTemplate.title=opt.title||this.textTemplate.promptTitle;this.textTemplate.promptPlaceholder=opt.promptPlaceholder||this.textTemplate.promptPlaceholder;this.textTemplate.okBtn=opt.okBtn||this.textTemplate.promptOkBtn;this.textTemplate.okBtnColor=opt.okBtnColor||this.textTemplate.okBtnColor;this.textTemplate.cancelBtn=opt.cancelBtn||this.textTemplate.cancelBtn;this.textTemplate.cancelBtnColor=opt.cancelBtnColor||this.textTemplate.cancelBtnColor;this.textTemplate.content=opt.content||this.textTemplate.content;var box=document.createElement("div"),_this=this;this.box=box;box.className=this.containerClass;box.innerHTML=this.getConfirmTemplate();document.body.appendChild(box);var okBtn=document.getElementsByClassName("btn-footer-ok");okBtn[okBtn.length-1].focus();okBtn[okBtn.length-1].onclick=function(){if(opt.onConfirm){opt.onConfirm()}_this.removeBox()};var cancelBtn=document.getElementsByClassName("btn-footer-cancel");cancelBtn[cancelBtn.length-1].onclick=function(){if(opt.onCancel){opt.onCancel()}_this.removeBox()}},prompt:function(opt){this.textTemplate.title=opt.title||this.textTemplate.title;this.textTemplate.content=opt.content||this.textTemplate.content;this.textTemplate.contentColor=opt.contentColor||this.textTemplate.contentColor;this.textTemplate.okBtn=opt.okBtn||this.textTemplate.okBtn;this.textTemplate.okBtnColor=opt.okBtnColor||this.textTemplate.okBtnColor;this.textTemplate.cancelBtn=opt.cancelBtn||this.textTemplate.cancelBtn;this.textTemplate.cancelBtnColor=opt.cancelBtnColor||this.textTemplate.cancelBtnColor;var box=document.createElement("div"),_this=this;box.className=this.containerClass;box.innerHTML=this.getPromptTemplate();this.box=box;document.body.appendChild(box);var promptInput=document.getElementsByClassName("postbird-prompt-input");
+promptInput=promptInput[promptInput.length-1];promptInput.focus();var okBtn=document.getElementsByClassName("btn-footer-ok");var inputData=promptInput.value;okBtn[okBtn.length-1].focus();okBtn[okBtn.length-1].onclick=function(){if(opt.onConfirm){opt.onConfirm(promptInput.value)}_this.removeBox()};var cancelBtn=document.getElementsByClassName("btn-footer-cancel");cancelBtn[cancelBtn.length-1].onclick=function(){if(opt.onCancel){opt.onCancel(promptInput.value)}_this.removeBox()}},colse:function(){this.removeBox()},removeBox:function(){var box=document.getElementsByClassName(this.containerClass);document.body.removeChild(box[box.length-1])}};
 /*
     Get Bilibili Real Live URL (https)
     By: 小淳
@@ -5692,6 +6624,58 @@ function getRealRid_Douyu(url, realrid_callback) {
     })
 }
 /*
+    Get Huya Real Live URL (https)
+    By: 小淳
+*/
+function getRealLive_Huya(url, qn, reallive_callback) {
+    // 第一个参数传入string,表示房间号（注意是真实房间号）
+    // 第二个参数传入string(1,2,3,4),表示清晰度 流畅_500(1) 超清_2500(2) 蓝光4M_4500(3) 原画(4)
+    // 第三个参数传入string(1,2,3,4),表示线路 1:主线路 2:备用线路1 3:备用线路2 4:备用线路3 
+    // 第四个参数传入回调函数，最好是箭头函数，用于处理返回的地址，例: (url, msg) => {console.log(url, msg)}
+    // 这个回调函数有2个参数，第一个是直播流地址，第二个是信息，用于判断错误
+    let qn_data = "500";
+    switch (qn) {
+        case "1":
+            qn_data = "500";
+            break;
+        case "2":
+            qn_data = "2500";
+            break;
+        case "3":
+            qn_data = "4500";
+            break;
+        case "4":
+            qn_data = "0";
+            break;
+        default:
+            qn_data = "500";
+            break;
+    }
+    GM_xmlhttpRequest({
+        method: 'GET',
+        headers: {
+            'user-agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'
+        },
+        url: url,
+        responseType: 'blob',
+        onload: resp=>{
+            let msg = "";
+            let ret = resp.responseText;
+            let liveUrl = /\<script\>\s*var liveLineUrl = "(.+)";\s*\<\/script\>/.exec(ret);
+            if (liveUrl == null) {
+                msg = "房间暂未开播";
+            } else {
+                liveUrl = liveUrl[1];
+                liveUrl = liveUrl.replace(/(_\d+)(.m3u8)/, '$2');
+                liveUrl = "https:" + liveUrl;
+                liveUrl = liveUrl + "&ratio=" + qn_data;
+                liveUrl = String(liveUrl).replace("m3u8", "flv");
+            }
+            reallive_callback(liveUrl, msg);
+        }
+    })
+}
+/*
     Style Hook
     用于替换页面的原样式
     By 小淳
@@ -5854,3 +6838,61 @@ class Ex_WebSocket_UnLogin {
         this.ws.close();
     }
 }
+function initRouter(href) {
+    if (String(href).indexOf("msg.douyu.com") != -1) {
+        initRouter_Motorcade();
+	} else {
+        if (String(href).indexOf("exid=chun") != -1) {
+            initRouter_DouyuRoom_Popup();
+        } else {
+            initRouter_DouyuRoom_Main();
+        }
+	}
+}
+
+function initRouter_Motorcade() {
+    // 车队
+    if (getQueryString("exid") == "chun") {
+        signMotorcade_Sign();
+    }
+}
+
+function initRouter_DouyuRoom_Popup() {
+    // 画中画
+    let intID = setInterval(() => {
+        if (typeof(document.querySelector('div.wfs-2a8e83')) != "undefined") {
+            document.querySelector('div.wfs-2a8e83').click();
+            document.querySelector('label.layout-Player-asidetoggleButton').click();
+            let l = document.querySelectorAll(".tip-e3420a > ul > li").length;
+            document.querySelectorAll(".tip-e3420a > ul > li")[l - 1].click();
+            clearInterval(intID);
+        }
+    }, 1000);
+}
+
+
+function initRouter_DouyuRoom_Main() {
+    // 主要
+    init();
+    let intID = setInterval(() => {
+        if (typeof(document.getElementsByClassName("BackpackButton")[0]) != "undefined") {
+            setTimeout(() => {
+                initStyles();
+                initPkg();
+                initPkgSpecial();
+                initTimer();
+            }, 1500)
+            clearInterval(intID);
+        }
+    }, 1000);
+}
+
+function initPkgSpecial() {
+    if (rid == "5189167") {
+        initPkg_Point();
+    }
+}
+
+// function initRouter_Novel() {
+//     startWatchNovel();
+// }
