@@ -1,0 +1,28 @@
+#icon("@res:47notbpv-htqb-e515-rbdj-205bihukmc3c.png")
+Dim sRet = ""
+Dim objPoint = "失败"
+Dim fail = ""
+Try
+	LocalOCR.Click({"wnd":[{"app":"ApowerMirror","cls":"WindowsForms*","title":"傲软投屏直播窗口"},{"cls":"WindowsForms*","ctrlname":"mirrorShowPanel","idx":4},{"cls":"WindowsForms*"}]},{"x":0,"y":0,"width":0,"height":0},"去完成","instr",1,"left","click",5000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":False,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"uia"})
+Catch fail
+Else
+	objPoint = "true"
+End Try
+TracePrint objPoint
+If objPoint = "true"
+	
+	Delay(20000)
+	#icon("@res:eorjssgl-sekd-f3co-gjv7-dtdhtle7qksh.png")
+	Mouse.Action({"wnd":[{"app":"ApowerMirror","cls":"WindowsForms*","title":"傲软投屏直播窗口"},{"cls":"WindowsForms*","ctrlname":"mirrorShowPanel","idx":4},{"cls":"WindowsForms*"}]},"left","dbclick",1000,{"bContinueOnError":True,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"TopLeft","iCursorOffsetX":25,"iCursorOffsetY":50,"sKeyModifiers":[],"sSimulate":"uia","bMoveSmoothly":False})
+Else
+	
+	#icon("@res:pdrrlt34-orve-oh4v-uvm3-6auovb2s600s.png")
+	Keyboard.PressKey({"wnd":[{"app":"ApowerMirror","cls":"WindowsForms*","title":"傲软投屏直播窗口"},{"cls":"WindowsForms*","ctrlname":"mirrorShowPanel","idx":4},{"cls":"WindowsForms*"}]},"Down",20,1000,{"bContinueOnError":True,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sKeyModifiers":[],"sSimulate":"uia","bClickBeforeInput":False})
+	#icon("@res:pdrrlt34-orve-oh4v-uvm3-6auovb2s600s.png")
+	Keyboard.PressKey({"wnd":[{"app":"ApowerMirror","cls":"WindowsForms*","title":"傲软投屏直播窗口"},{"cls":"WindowsForms*","ctrlname":"mirrorShowPanel","idx":4},{"cls":"WindowsForms*"}]},"Down",20,1000,{"bContinueOnError":True,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sKeyModifiers":[],"sSimulate":"uia","bClickBeforeInput":False})
+	#icon("@res:pdrrlt34-orve-oh4v-uvm3-6auovb2s600s.png")
+	Keyboard.PressKey({"wnd":[{"app":"ApowerMirror","cls":"WindowsForms*","title":"傲软投屏直播窗口"},{"cls":"WindowsForms*","ctrlname":"mirrorShowPanel","idx":4},{"cls":"WindowsForms*"}]},"Down",20,1000,{"bContinueOnError":True,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sKeyModifiers":[],"sSimulate":"uia","bClickBeforeInput":False})
+End If
+//Mouse.Move(70, 100, False,{"iDelayAfter":300,"iDelayBefore":200})
+
+
