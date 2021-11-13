@@ -75,11 +75,9 @@ Sub shibiebailongweizhi()
 	X = Clng(zhaoarray(0))
 	Y = Clng(zhaoarray(1))
     If X < 0 Then 
-    	TracePrint "没有找到白龙,尝试使用颜色识别白龙" & X & "," & Y
-    XY = Plugin.BkgndColor.FindColorEx(Hwnd,  200, 75, 1679, 730, "94917B", 0, 0.9)  
-	zhaoarray = Split(XY, "|")
-	X = Clng(zhaoarray(0))
-	Y = Clng(zhaoarray(1))
+    	TracePrint "没有找到白龙" & X & "," & Y
+    	Call Plugin.Bkgnd.LeftUp(Hwnd, X + 50, Y + 300)
+    	
     End If
     
     If X > 0 Then 
@@ -114,7 +112,31 @@ Sub shibiezhaohuan()
 	End If
 End Sub
 
-
+//滚键盘丢技能
+Sub diujineng()
+Call Plugin.Bkgnd.KeyPress(Hwnd, 192)
+Call Plugin.Bkgnd.KeyPress(Hwnd, 192)
+Call Plugin.Bkgnd.KeyPress(Hwnd, 49)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 49)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 49)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 50)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 50)
+Call Plugin.Bkgnd.KeyPress(Hwnd, 51)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 51)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 51)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 52)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 52)
+Delay 100
+Call Plugin.Bkgnd.KeyPress(Hwnd, 52)
+End Sub
 
 Sub yidongfuwei()
 Call Plugin.Bkgnd.LeftClick(Hwnd, 300, 450)
@@ -231,16 +253,22 @@ Sub panduanwanshengxiuxiu()
 	End If
 	
 End Sub
+
 //嗅嗅
 
 Sub panduanxiuxiu()
-	XY = Plugin.BkgndColor.FindColor(Hwnd, 710, 775, 1477, 967, "5075A2")
+	XY = Plugin.BkgndColor.FindColor(Hwnd, 710, 775, 1477, 967, "5C7697")
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
 	lihuarray = Split(XY, "|")
 	X = Clng(lihuarray(0))
 	Y = Clng(lihuarray(1))
+	
+	If X < 0 Then 
+    	TracePrint "没有找到嗅嗅" & X & "," & Y	
+    End If
+	
     TracePrint "x,y" & X+50 & "," & Y
     If X > 0 Then 
     //Call shibieren()
@@ -282,8 +310,10 @@ Sub panduanfeizei()
 	End If
 	
 End Sub
+
+//厉火
 Sub panduanlihuo
-XY = Plugin.BkgndColor.FindColorEx(Hwnd, 710, 775, 1477, 967, "2039CC",0, 1)
+	XY = Plugin.BkgndColor.FindColorEx(Hwnd, 710, 775, 1477, 967, "202EB1",0, 0.9)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
@@ -303,10 +333,10 @@ XY = Plugin.BkgndColor.FindColorEx(Hwnd, 710, 775, 1477, 967, "2039CC",0, 1)
     Delay 50
     Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     TracePrint "找到厉火"
-    //Call diujineng()
-	End If
-	
+    End If
 End Sub
+
+
 Sub panduanzhizhu()
 	XY = Plugin.BkgndColor.FindColorEx(Hwnd, 710, 775, 1477, 967, "8A836C",0, 1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
@@ -357,13 +387,13 @@ End Sub
 
 //白龙
 Sub panduanbailong()
-	XY = Plugin.BkgndColor.FindColorEx(Hwnd, 710, 775, 1477, 967, "35474D",0, 1)
+	XY = Plugin.BkgndColor.FindColorEx(Hwnd, 710, 775, 1477, 967, "DEF8DF",0, 1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
-	lihuarray = Split(XY, "|")
-	X = Clng(lihuarray(0))
-	Y = Clng(lihuarray(1))
+	lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
     TracePrint "x,y" & X+50 & "," & Y
     If X > 0 Then 
      //Call shibieren()
@@ -376,7 +406,7 @@ Sub panduanbailong()
     Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     Delay 50
     Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
-    TracePrint "召唤白龙"
+    TracePrint "找到白龙"
     End If
 End Sub
 
@@ -384,6 +414,17 @@ End Sub
 Sub startpipei()
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
+End Sub
+
+//失败匹配
+Sub failback()
+	Color = Plugin.BkgndColor.GetPixelColor(Hwnd, 896, 970)
+	TracePrint "此时失败位置的颜色" & Color
+	
+	If Color = "7645110" Then 
+	Call Plugin.Bkgnd.RightDown(Hwnd, 1000, 950)
+	End If
+
 End Sub
 
 //Call shibiewu()
@@ -395,16 +436,18 @@ End Sub
 
 //判断技能
 Sub panduanjineng()
+    Call panduanlihuo()
+    Call panduanlihuo()
 	Call zhaohuanhuoban()
+	Delay 1000
 	Call panduanbailong()
-	//Call panduanlihuo()
-	//Delay 1000
-	//Call panduanzhizhu()
-	Call panduanwanshengxiuxiu()
+	
+	Call panduanzhizhu()
+	//Call panduanwanshengxiuxiu()
+	Call panduanxiuxiu()
 	//Call panduanmaren()
-	Delay 500
+	Delay 1000
 	Call diupengzhang()
-	Call diubaixian()
 	//Call diuzengyi()
 	Call panduanfeizei()
 End Sub
@@ -412,10 +455,11 @@ End Sub
 //等待蓝
 Sub waitlan()
 	    //先丢嗅嗅飞贼,等待魔力大于7
-	    Call panduanfeizei()
-	    Call panduanwanshengxiuxiu()
     	Color = Plugin.BkgndColor.GetPixelColor(Hwnd, 1200, 980)
-    	TracePrint "ColorStart" & Color
+    	TracePrint "ColorStart" & Color]
+    	//梨木
+    	//Do Until Color <> "2697762"
+    	//海格魔杖
     	Do Until Color <> "5460893"
     	Color = Plugin.BkgndColor.GetPixelColor(Hwnd, 1200, 980)
     	TracePrint "Color" & Color
@@ -426,15 +470,16 @@ Sub waitlan()
      	TracePrint "开始匹配"
      	Call startpipei()
      	Delay 200
-     	TracePrint "按下继续按钮返回按钮"
-     	Call Plugin.Bkgnd.RightDown(Hwnd, 1000, 930)
- 		Delay 500
+     	Call failback()
+     	//Call Plugin.Bkgnd.RightDown(Hwnd, 1000, 950)
+ 		Delay 1000
  		Loop
 	Call panduanjineng()
 End Sub
 
 Call startpipei()
-Call Plugin.Bkgnd.RightDown(Hwnd, 1000, 930)
+Call failback()
+//Call Plugin.Bkgnd.RightDown(Hwnd, 1000, 950)
 //Delay 200
 //Call Plugin.Bkgnd.RightDown(Hwnd, 1000, 930)
 
