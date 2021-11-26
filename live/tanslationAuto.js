@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @include      *.*.*
+// @include      *
 // @include      *.quora.com/*
 // @include      *.twitter.com/*
 // @grant        none

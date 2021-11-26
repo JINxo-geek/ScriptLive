@@ -1,0 +1,368 @@
+Prerequisites
+This tutorial requires knowledge about JSON. This guide will focus specifically on the use for web wallpapers. Please see the link below on how to create a new web wallpaper to start off with.
+
+
+Creating an HTML web wallpaper 
+Wallpaper Engine 的一篇指南
+作者：Biohazard
+This guide will show you how to set up a new web based wallpaper.
+
+This guide assumes you already visited guides for creating a web wallpaper and you have basic knowledge of Javascript ( methods, callbacks )
+Introduction
+In this guide we will shed light on all the properties you can use when creating a (web)wallpaper for Wallpaper Engine. So that users can select values from the settings, that can change the way your wallpaper interacts or works. ( change an image, or change some kind of multiplier value )
+
+Small preview of what's to come:
+
+
+The following properties are available for use:
+Boolean
+Slider
+Color
+File
+Directory
+Combo
+For some properties we will link to other guides as well, because they explain into detail how you can use them ( with code examples; like for instance the File and Directory picker )
+Boolean
+The boolean is one of the easiest properties to learn to use. Because as you probably already know, it defines a true/false value. and is visualized as a checkbox for the user.
+
+you can define a boolean property as following:
+
+"properties": {
+	"guide_enableColor": {
+		"text": "Slider",
+		"type": "bool",
+		"value": false
+	}
+}
+
+As you can see, we defined the property with the name "guide_enableColor". And within that object we set 4 properties.
+
+"order" - defines the order in which it is rendered on screen
+"text" - the visible text on screen
+"type" - this is what it's all about here, the value determines the way the user interacts with your property
+"value" - the default value for this property ( can be set to 'false' or 'true' meaning; unchecked or checked )
+
+it will show up as the user like this:
+
+
+ NOTE: The checkbox is checked, this triggers the 'applyUserProperties' in our javascript 
+
+And this is how you can use the boolean in Javascript:
+
+<script>
+    // Read changes made by users
+    window.wallpaperPropertyListener = {
+        applyUserProperties: function(properties) {
+            if (properties.guide_enableColor) {
+                if (properties.guide_enableColor.value == true) {
+                    // if it's checked
+                } else {
+                    // Don't forget your action when a user unchecks
+                }
+            }
+        }
+    }
+</script>
+
+the '== true' can be omitted in the 'if()' check, because the boolean.value would be enough to pass the check, but added it for readability
+Slider
+The slider lets the user select a value within a range. A slider can be defined in the JSON as following:
+
+"properties": {
+	"guide_valueSlider": {
+		"max": 200,
+		"min": 0,
+		"text": "Slider",
+		"type": "slider",
+		"value": 100,
+                "editable": true
+	}
+}
+
+The unique properties for a slider are :
+
+"min" : The minimum value the user can select
+"max" : The maximum value the user can select
+"editable" : This will allow users to enter a value themselves, ignoring the range of the slider.
+The value of the slider will be what the slider is defaulted to.
+
+
+
+And in the javascript we use the following code to read the value :
+
+<script>
+    // Read changes made by users
+    window.wallpaperPropertyListener = {
+        applyUserProperties: function(properties) {
+            if (properties.slider) {
+                if (properties.slider.value !== "") {
+                    // Do something with the slider value
+                }
+            }
+        }
+    }
+</script>
+
+NOTE: The value is checked with ' !== "" ', this is because when the user selects '0', it would not pass the 'hasValue check otherwise, because in Javascript '0 == false'
+Color
+The color property lets the user select a color from a colorpicker. Just like the initial 'schemecolor' property does.
+
+"schemecolor": {
+    "text": "Background color",
+    "type": "color",
+    "value": "0 0 0"
+},
+
+The specific thing to know about the color property is how to use the value. Although it is in RGB values, it does not range from 0-255, but from 0-1, with fractions. At the time of writing there is no Alpha value available, so transparency is not supported (rgba).
+
+a value of "1 0 0" will show up like this:
+
+
+
+When the user clicks on it, a colorpicker will appear, which lets the user selects an custom color
+
+
+
+We can use the value in our javascript like this :
+
+<script>
+    // Read changes made by users
+    window.wallpaperPropertyListener = {
+        applyUserProperties: function(properties) {
+            if (properties.schemecolor) {
+                if (properties.schemecolor.value) {
+                    var c = properties.schemecolor.value.split(' ').map(function(c) {
+                        return Math.ceil(c * 255)
+                    });
+                    var colorString = 'rgb(' + c + ')'; // Solid color
+                    var alphaColor = 'rgba(' + c + ', 0.5)'; // 50% alpha
+                }
+            };
+        }
+    }
+</script>
+
+NOTE : we have to convert the color string to a valid color code string in javascript first. We cal also make the color transparent by turning it into an rgba() color string, with an added alpha value
+File
+The file picker ( image picker ) is used to let a user select a image from their own local storage. If you have created some sort of interactive overlay, you can use this as a ''background-image'' selector for example.
+
+We can declare an file picker like this :
+
+"properties": {
+	"image": {
+		"text": "File picker",
+		"type": "file"
+	}
+}
+
+And it will show up like this:
+
+
+
+Please note that in the second image we have selected the image "test-blue1-sig.jpg". It does not appear as a small preview or anything.
+
+NOTE: To restrict the type of file that the user can pick, use the following property:
+
+"fileType": "image" => .jpeg, .jpg, .png, .pnga, .bmg, .gif, .svg, .webp (default)
+"fileType": "video" => .webm, .ogg, .ogv (native supported)
+
+In the javascript we can use this property as follow:
+
+<script>
+    // Read changes made by users
+    window.wallpaperPropertyListener = {
+        applyUserProperties: function(properties) {
+            if (properties.image) {
+                if (properties.image.value) {
+                    // Create a valid location path
+                    var imagePath = "file:///" + properties.image.value;
+
+                    // Set is as the body background Image
+                    document.body.style.backgroundImage = "url('" + imagePath + "')";
+                } else {
+                    // You may want to reset the background when the user clears the Image
+                    document.body.style.backgroundImage = null;
+                }
+            }
+        }
+    }
+</script>
+
+Please note that just like with the Boolean, we may want to trigger some events if the user clears the image, so there will probably always be an "else{ }" clause in the code
+Directory
+Directory is used to let a user select a directory, from which we can detect file changes, or retrieve files from. I'd like to refer to the following guide that goes indepth into how to use the File and Directory in your project:
+
+
+Advanced: Web user customization - Importing User Images 
+Wallpaper Engine 的一篇指南
+作者：Biohazard
+Follow this tutorial to let users import their own images into your web wallpaper and enable custom backgrounds, slideshows or even import the images into WebGL.
+Combo
+Create a dropdown list from which the user can select a predefined value. When you want the user to choose between several options, you can choose to select a 'combo' property.
+
+Some use cases are :
+Let the user select a background type : color, image, slideshow
+Select some FPS ranges for your projeft : 30FPS, 60FPS, 144FPS
+
+"properties": {
+	"selectResolution": {
+		"options": [{
+				"label": "Screen Resolution",
+				"value": 1
+			},
+			{
+				"label": "1080P (FHD)",
+				"value": 2
+			},
+			{
+				"label": "720P (HD)",
+				"value": 3
+			}
+		],
+		"text": "Resolution",
+		"type": "combo",
+		"value": 1
+	}
+}
+
+This shows up like this:
+
+
+
+in the javascript you can just get the value just like any other property, so you could do a quick switch() case: to change the behaviour of your code based on the selected value:
+
+<script>
+    // Read changes made by users
+    window.wallpaperPropertyListener = {
+        applyUserProperties: function(properties) {
+            if (properties.selectResolution) {
+                if (properties.selectResolution.value) {
+                    switch (properties.selectResolution.value) {
+                        case 1:
+                            $("#canvas").attr({
+                                width: $(document).width(),
+                                height: $(document).height()
+                            });
+                            break;
+                        case 2:
+                            $("#canvas").attr({
+                                width: 1920,
+                                height: 1080
+                            });
+                            break;
+                        case 3:
+                            $("#canvas").attr({
+                                width: 1280,
+                                height: 720
+                            });
+                            break;
+                    }
+                }
+            }
+        }
+    }
+</script>
+Text Input
+A very common input type for webpages, but maybe less common for properties for wallpapers.
+
+You can use the following code to create an Text field for users:
+
+"general": {
+        "properties": {
+            "userName" :{
+                "type" : "textinput",
+                "value" : "",  // If you want it to have a default value
+                "text" : "Enter your name"
+            }
+      }
+}
+
+This way you can use this ''string'' of text in your code to render the name on the background of the wallpaper.
+
+HINT:
+
+You can also use this input to let users enter URL's or something, to use in your code ( online images etc. )
+Interacting properties
+You can let properties interact with each other to make the settings more clear to users ( if you have a lot of settings.
+
+Instead of using checkboxes and dropdownlists to toggle functionality in your wallpaper, you can also use them to toggle options. like this:
+
+"backgroundSelect": {
+	"options": [{
+			"label": "Color",
+			"value": 1
+		},
+		{
+			"label": "Image",
+			"value": 2
+		}
+	],
+	"text": "Background Type",
+	"type": "combo",
+	"value": 1
+},
+"schemecolor": {
+	"condition": "backgroundSelect.value == 1",
+	"text": "Background color",
+	"type": "color",
+	"value": "0 0 0"
+},
+"image": {
+	"condition": "backgroundSelect.value == 2",
+	"text": "Background Image",
+	"type": "file"
+}
+
+The condition is an Javascript evaluated condition that determines whether the option is visible or not ( and thus if the user can change it / trigger a change ). In this case there is a select, in which the user can choose between a solid background color, or a background image. If the user wants a background Image, there is no point in showing the background color property, because the Image will be on top of it.
+
+Works like this:
+
+
+
+
+So the background color property and the background image property are never available at the same time.
+Final thoughts
+A couple of notes to yourself :
+
+Rember that the JSON is automatically formatted when WE makes changes to it. It also sorts properties from A-Z. So it's recommended to pre-fix properties that are related to eachother like :
+
+"circleBarsBorderColor": {
+	"order": 55,
+	"text": "Border color",
+	"type": "color",
+	"value": "0 0 1"
+},
+"circleBarsBorderWidth": {
+	"max": 5,
+	"min": 0,
+	"order": 65,
+	"text": "Border width",
+	"type": "slider",
+	"value": 1
+},
+
+So when the properties get sorted, they will stay roughly at the same place where you created them.
+
+Second note:
+
+When user the order property. Don't order them with numbers like :
+
+1,2,3,4,5,6.
+
+Because when you think of new settings, and they need to fit between options 2 and 3. You have to reorder all the properties that come afterwards.
+
+I've made that mistake once, and will not make it again!
+
+So every block of options start with settings numbered from:
+
+100,200,300.
+
+When I need extra settings, I can easility fit them between 100 and 200. ( it's just a number anyways... )
+
+
+
+Hiya!
+
+This was my first guide I have written for any steam app. Please help me improve it where you see fit. And I'll do my best to learn and write better guides in the future.
+
+Hope you've learned something here.
