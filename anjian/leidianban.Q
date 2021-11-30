@@ -469,9 +469,9 @@ Sub xiaojingling()
     TracePrint "找到小精灵" & "点击坐标" & X & Y
     End If
 End Sub
-
+//马人
 Sub panduanmaren()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "706645",0, 1)
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "87B8E2",0, 1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
@@ -490,7 +490,7 @@ Sub panduanmaren()
     Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     Delay 50
     Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
-    TracePrint "找到馬人" & "点击坐标" & X & Y
+    TracePrint "找到马人" & "点击坐标" & X & Y
     End If
 End Sub
 
@@ -521,7 +521,7 @@ End Sub
 
 //牛牛
 Sub niuniu()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "7188D4",0, 1)
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "5D6996",0, 1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
@@ -650,7 +650,7 @@ Sub panduanjineng()
 	Call panduanxiuxiu()
 	Call zhutu()
 	Call zhadan()
-	//Call panduanmaren()
+	Call panduanmaren()
 	Delay 1000
 	//Call diupengzhang()
 	//Call diuzengyi()
