@@ -6,6 +6,8 @@ HwndEx = Plugin.Window.Find(0, "雷电模拟器(64)")
 Hwnd = Plugin.Window.FindEx(HwndEx, 0, 0, 0)
 //MsgBox "查找到的父窗口句柄为："& Hwnd &"test"
 //再获取坐标
+//卡牌位置的颜色在不同位置会出现色差,所以一张卡牌的判断,需要多设置几次颜色查找
+
 Randomize
 sRect = Plugin.Window.GetClientRect(Hwnd)
 Dim MyArray
@@ -29,13 +31,13 @@ LogStart "D:\a.log"
 Sub zuobiaoxianshi()
 TracePrint "显示坐标"
 
-	//Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
+	Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
 	Delay 500
-	//Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 775)
+    Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 775)
 	Delay 500
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 967)
 	Delay 500
-	Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 775)
+	Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 967)
 End Sub
 
 
@@ -345,16 +347,20 @@ Sub zhadan()
 	End If
 	
 End Sub
-
+//56C5F1
 Sub panduanfeizei()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "53BEEB",0,1)
+		XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1400, 967, "485C5F",1,1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
 	lihuarray = Split(XY, "|")
 	X = Clng(lihuarray(0))
 	Y = Clng(lihuarray(1))
-    TracePrint "x,y" & X+50 & "," & Y
+    TracePrint "x,y" & X + 50 & "," & Y
+    If X < 0 Then 
+    	TracePrint "没有找到飞贼" & X & "," & Y	
+    End If
+    
     If X > 0 Then 
     TracePrint "当前x,y" & X & "and" & Y
     Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
@@ -373,7 +379,7 @@ End Sub
 
 //厉火
 Sub panduanlihuo()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "202EB1",0, 0.9)
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "202EB1",0, 1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
@@ -423,14 +429,24 @@ End Sub
 
 //;雷鸟B0BEA8
 Sub leiniao()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "689FB7",0, 1)
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "B2C0A5",0, 1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
 	lihuarray = Split(XY, "|")
 	X = Clng(lihuarray(0))
 	Y = Clng(lihuarray(1))
-    TracePrint "x,y" & X+50 & "," & Y
+    TracePrint "x,y" & X + 50 & "," & Y
+    
+     If X < 0 Then 
+    
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "B0BDA2", 0, 1)
+    lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到雷鸟" & X & "," & Y	
+    End If
+    
     If X > 0 Then 
      //Call shibieren()
     //Call Plugin.Bkgnd.MoveTo(Hwnd, X, Y)
@@ -447,14 +463,24 @@ Sub leiniao()
 End Sub
 //3C434A 小精灵
 Sub xiaojingling()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "B0BEA8",0,1)
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "7E523E",0,1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
 	lihuarray = Split(XY, "|")
 	X = Clng(lihuarray(0))
 	Y = Clng(lihuarray(1))
-    TracePrint "x,y" & X+50 & "," & Y
+    TracePrint "x,y" & X + 50 & "," & Y
+    
+    If X < 0 Then 
+    
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "81543E", 0, 1)
+    lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到小精灵" & X & "," & Y	
+    End If
+    
     If X > 0 Then 
      //Call shibieren()
     //Call Plugin.Bkgnd.MoveTo(Hwnd, X, Y)
@@ -521,7 +547,7 @@ End Sub
 
 //牛牛
 Sub niuniu()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "5D6996",0, 1)
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "7284D0",0, 1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
@@ -529,7 +555,27 @@ Sub niuniu()
 	X = Clng(lihuoarray(0))
 	Y = Clng(lihuoarray(1))
     TracePrint "x,y" & X & "," & Y
+    
+    If X < 0 Then 
+    
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "6475AC", 0, 1)
+    lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到牛牛" & X & "," & Y	
+    End If
+    
+     If X < 0 Then 
+    
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "6971A9", 0, 1)
+    lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到牛牛" & X & "," & Y	
+    End If
+    
     If X > 0 Then 
+    
      //Call shibieren()
     //Call Plugin.Bkgnd.MoveTo(Hwnd, X, Y)
     TracePrint "当前x,y" & X & "and" & Y
@@ -575,7 +621,7 @@ End Sub
 
 //猫
 Sub mao()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "3A3434",0, 1)
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "3B3A34",0, 1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim maoarray
@@ -610,7 +656,7 @@ Sub failback()
 	Color2 = Plugin.BkgndColor.GetPixelColor(HwndEx, 896, 970)
 	TracePrint "此时失败位置的颜色" & Color2
 	
-	If Color2 = "7711161" Then 
+	If Color2 = "7184818" Then 
 	TracePrint "失败返回"
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1000, 950)
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1000, 950)
@@ -632,26 +678,35 @@ Sub yidong()
 End Sub
 
 
-
 //判断技能
 Sub panduanjineng()
 
     //Call panduanlihuo()
     Call fenghuang()
+    Delay 200
 	Call zhaohuanhuoban()
+	 Delay 200
 	Call niuniu()
+	 Delay 200
 	Call zhizhu()
-	Delay 1000
+	 Delay 200
 	//Call panduanbailong()
 	Call leiniao()
+	 Delay 200
 	Call xiaojingling()
+	 Delay 200
 	Call mao()
+	 Delay 200
 	Call panduanwanshengxiuxiu()
+	 Delay 200
 	Call panduanxiuxiu()
+	 Delay 200
 	Call zhutu()
+	 Delay 200
 	Call zhadan()
+	 Delay 200
 	Call panduanmaren()
-	Delay 1000
+	 Delay 200
 	//Call diupengzhang()
 	//Call diuzengyi()
 	Call panduanfeizei()
