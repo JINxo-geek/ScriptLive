@@ -6,7 +6,7 @@ HwndEx = Plugin.Window.Find(0, "雷电模拟器(64)")
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-1(64)")
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-2(64)")
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-3(64)")
-//Hwnd = Plugin.Window.FindEx(HwndEx, 0, 0, 0)
+Hwnd = Plugin.Window.FindEx(HwndEx, 0, 0, 0)
 //MsgBox "查找到的父窗口句柄为："& Hwnd &"test"
 //再获取坐标
 Randomize
