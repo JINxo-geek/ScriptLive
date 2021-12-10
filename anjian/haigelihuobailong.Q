@@ -790,8 +790,36 @@ Call Plugin.Bkgnd.KeyPress(Hwnd, 70)
 
 End Sub
 
-//Call shibiewu()
-//Call shibieren()
+//结束战斗,点击确认
+Sub endfight()
+	Color5 = Plugin.BkgndColor.GetPixelColor(HwndEx, 896, 970)
+	Color6 = Plugin.BkgndColor.GetPixelColor(HwndEx,1309,156 )
+	TracePrint "此时结束战斗" & Color5
+	TracePrint "此时结束战斗,胜利了" & Color6
+	If Color5 = "3752013" Then 
+	TracePrint "点击确认"
+	//和雷电模拟器快捷键f绑定在失败位置提高准确率
+Call Plugin.Bkgnd.KeyPress(Hwnd, 70)
+	//Call Plugin.Bkgnd.LeftClick(Hwnd, 900, 920)
+	
+	End If
+	
+	If Color5 = "3692402" Then 
+	TracePrint "胜利了点击继续"
+	//和雷电模拟器快捷键f绑定在失败位置提高准确率
+Call Plugin.Bkgnd.KeyPress(Hwnd, 70)
+	//Call Plugin.Bkgnd.LeftClick(Hwnd, 900, 920)
+	
+	End If
+	
+	If Color5 = "2575467" Then 
+	TracePrint "胜利了点击继续"
+	//和雷电模拟器快捷键f绑定在失败位置提高准确率
+Call Plugin.Bkgnd.KeyPress(Hwnd, 70)
+	//Call Plugin.Bkgnd.LeftClick(Hwnd, 900, 920)
+	
+	End If
+End Sub
 
 
 Sub yidong()
@@ -875,6 +903,7 @@ End If
 End Sub
 
 
+
 Sub test()
 Dim Color
 Color = "1111"
@@ -887,7 +916,9 @@ Wend
 End Sub
 Call startpipei()
 Call failback()
+Call endfight()
 Call yidong()
 //Call zuobiaoxianshi()
 Call induel()
+Delay 1000
 
