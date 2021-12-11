@@ -797,8 +797,9 @@ End Sub
 
 //结束战斗,点击确认
 Sub endfight()
+Call clickgoon()
 	Color5 = Plugin.BkgndColor.GetPixelColor(HwndEx, 896, 970)
-	Color6 = Plugin.BkgndColor.GetPixelColor(HwndEx,1309,156 )
+	Color6 = Plugin.BkgndColor.GetPixelColor(HwndEx,1309,156)
 	TracePrint "此时结束战斗" & Color5
 	TracePrint "此时结束战斗,胜利了" & Color6
 	If Color5 = "3752013" Then 
@@ -841,6 +842,10 @@ Call Plugin.Bkgnd.KeyPress(Hwnd, 70)
     End If
 End Sub
 
+//点击屏幕,为了方便如复制卡成功后等的继续
+Sub clickgoon()
+	Call Plugin.Bkgnd.LeftClick(Hwnd, 1192,812)
+End Sub
 
 Sub yidong()
 	Call Plugin.Bkgnd.KeyPress(Hwnd, 9)
