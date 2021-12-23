@@ -674,6 +674,53 @@ Sub fenghuang()
     End If
 End Sub
 
+//白龙 6CC9D7
+Sub bailong()
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "6595C3",0, 1)
+    //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
+    //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
+	Dim lihuoarray
+	lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    TracePrint "x,y" & X & "," & Y
+    
+   	If X < 0 Then 
+    	TracePrint "没有找到白龙" & X & "," & Y	
+    End If
+    
+  If X < 0 Then 
+    
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "6687A2", 0, 1)
+    lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到白龙" & X & "," & Y	
+    End If
+      If X < 0 Then 
+    
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "92CFF4", 0, 1)
+    lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到白龙" & X & "," & Y	
+    End If
+    
+    If X > 0 Then 
+     //Call shibieren()
+    //Call Plugin.Bkgnd.MoveTo(Hwnd, X, Y)
+    TracePrint "当前x,y" & X & "and" & Y
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+    Delay 50
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+     Delay 50
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+    Delay 50
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+    TracePrint "找到白龙" & "点击坐标" & X & Y
+    End If
+End Sub
+
 //妖怪书
 Sub yaoguaishu()
 	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "5171A7",0, 1)
@@ -844,7 +891,7 @@ End Sub
 
 //点击屏幕,为了方便如复制卡成功后等的继续
 Sub clickgoon()
-	Call Plugin.Bkgnd.LeftClick(Hwnd, 1192,812)
+	Call Plugin.Bkgnd.LeftClick(Hwnd, 570,597)
 End Sub
 
 Sub yidong()
@@ -856,6 +903,8 @@ End Sub
 Sub panduanjineng()
 
     //Call panduanlihuo()
+    Call bailong()
+    Delay 200
     Call fenghuang()
     Delay 200
 	Call zhaohuanhuoban()
@@ -939,11 +988,15 @@ TracePrint "循环"
 Wend	
 	
 End Sub
+
+Sub init()
 Call startpipei()
 Call failback()
 Call endfight()
 Call yidong()
-//Call zuobiaoxianshi()
 Call induel()
-Delay 1000
+End Sub
+Call init()
+//Call zuobiaoxianshi()
 
+Delay 1000
