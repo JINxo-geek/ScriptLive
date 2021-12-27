@@ -2,9 +2,9 @@
 //由于双击智能施法,技能会释放到鼠标知道的方向
 //思路,在双击技能前,后台移动鼠标,再进行双击
 //先获取句柄
-HwndEx = Plugin.Window.Find(0, "雷电模拟器(64)")
+//HwndEx = Plugin.Window.Find(0, "雷电模拟器(64)")
 //HwndEx = Plugin.Window.Find(0, "哈利波特:魔法觉醒 - 标准引擎")
-//HwndEx = Plugin.Window.Find(0, "雷电模拟器-1(64)")
+HwndEx = Plugin.Window.Find(0, "雷电模拟器-1(64)")
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-2(64)")
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-3(64)")
 Hwnd = Plugin.Window.FindEx(HwndEx, 0, 0, 0)
@@ -766,6 +766,51 @@ Sub yaoguaishu()
     TracePrint "找到妖怪书" & "点击坐标" & X & Y
     End If
 End Sub
+//妖怪书
+Sub shehu()
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "50403E",0, 1)
+    //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
+    //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
+	Dim lihuoarray
+	lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    TracePrint "x,y" & X & "," & Y
+    
+   	If X < 0 Then 
+    	TracePrint "3号没有找到蛇壶" & X & "," & Y	
+    End If
+    
+  	If X < 0 Then 
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "6B85C1", 0, 1)
+    lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到妖怪书" & X & "," & Y	
+    End If
+    
+    If X < 0 Then 
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "496091", 0, 1)
+    lihuoarray = Split(XY, "|")
+	X = Clng(lihuoarray(0))
+	Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到4妖怪书" & X & "," & Y	
+    End If
+    
+    If X > 0 Then 
+     //Call shibieren()
+    //Call Plugin.Bkgnd.MoveTo(Hwnd, X, Y)
+    TracePrint "当前x,y" & X & "and" & Y
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+    Delay 50
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+     Delay 50
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+    Delay 50
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+    TracePrint "找到蛇壶" & "点击坐标" & X & Y
+    End If
+End Sub
 
 //猫
 Sub mao()
@@ -915,7 +960,7 @@ Sub panduanjineng()
 	 Delay 200
 	 Call yaoguaishu()
 	 Delay 200
-	//Call panduanbailong()
+	Call shehu()
 	Call leiniao()
 	 Delay 200
 	Call xiaojingling()
