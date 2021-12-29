@@ -2,9 +2,9 @@
 //由于双击智能施法,技能会释放到鼠标知道的方向
 //思路,在双击技能前,后台移动鼠标,再进行双击
 //先获取句柄
-//HwndEx = Plugin.Window.Find(0, "雷电模拟器(64)")
+HwndEx = Plugin.Window.Find(0, "雷电模拟器(64)")
 //HwndEx = Plugin.Window.Find(0, "哈利波特:魔法觉醒 - 标准引擎")
-HwndEx = Plugin.Window.Find(0, "雷电模拟器-1(64)")
+//HwndEx = Plugin.Window.Find(0, "雷电模拟器-1(64)")
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-2(64)")
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-3(64)")
 Hwnd = Plugin.Window.FindEx(HwndEx, 0, 0, 0)
@@ -851,7 +851,7 @@ End Sub
 Sub startpipei()
 Color3 = Plugin.BkgndColor.GetPixelColor(HwndEx, 1570, 873)
 TracePrint "此时匹配位置的颜色" & Color3
-If Color3 = "3552827" Then
+If Color3 = "3618620" Then
 TracePrint "开始匹配"
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
