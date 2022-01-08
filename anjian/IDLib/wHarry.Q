@@ -9,10 +9,13 @@
 Dim startColor
 Dim failColor
 Dim induelColor
+Dim selectColor
 
-startColor = 7711161
-failColor = 2171173
-induelColor = 2037780
+
+startColor = 1777707
+failColor = 7842747
+induelColor = 2695448
+selectColor = 13236216
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-哈利10g版(64)")
 
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器重点(64)")
@@ -701,7 +704,8 @@ End Sub
 Sub startpipei()
 Color3 = Plugin.BkgndColor.GetPixelColor(HwndEx, 1570, 873)
 TracePrint "此时匹配位置的颜色" & Color3
-If Color3 = startColo Then
+TracePrint "startColor" & startColor
+If Color3 = startColor Then
 TracePrint "开始匹配"
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
@@ -804,8 +808,9 @@ End Sub
 
 //点击屏幕,为了方便如复制卡成功后等的继续
 Sub clickgoon()
-TracePrint "移动点击到位置500,597"
-	Call Plugin.Bkgnd.LeftClick(Hwnd, 500,597)
+TracePrint "移动点击到位置200.697,等待3秒"
+	Call Plugin.Bkgnd.LeftClick(Hwnd, 200,697)
+  Delay 3000
 End Sub
 
 
@@ -820,8 +825,8 @@ Sub panduanjineng()
     Delay 200
     Call fenghuang()
     Delay 200
-    Call zhaohuanhuoban()
-     Delay 200
+   // Call zhaohuanhuoban()
+    // Delay 200
     Call niuniu()
      Delay 200
     //Call zhizhu()
@@ -852,7 +857,13 @@ Sub panduanjineng()
 
 End Sub
 
-
+Sub yidonghefangjineng()
+TracePrint "移动到位置(200,100),等待5秒"
+Call Plugin.Bkgnd.LeftClick(Hwnd, 200,100)
+Delay 5000
+//滚键盘,触发雷电模拟器录制的释放技能F
+Call Plugin.Bkgnd.KeyPress(Hwnd, 192)
+End Sub
 
 //判断是否在决斗场
 Sub induel()
@@ -865,21 +876,38 @@ Sub induel()
         TracePrint "induelColor" & induelColor
 If Color4 = induelColor Then 
 	TracePrint "在决斗场内,释放技能"
-	Call panduanjineng()
+	//Call panduanjineng()
+  Call yidonghefangjineng()
 End If
 If Color4 = "2236190" Then 
 	TracePrint "在决斗场内,释放技能"
-	Call panduanjineng()
+	//Call panduanjineng()
 End If
 
 End Sub
 
 
+//选择人物,第一个或者第二个
+Sub selectfunc()
+	Color5 = Plugin.BkgndColor.GetPixelColor(HwndEx,1061,938)
+  	TracePrint "是否选择人物" & Color4
+    TracePrint "selectColor" & selectColor
+If Color5 = selectColor Then 
+TracePrint "选择人物"
+ //选择第二个
+//键盘码Tab为9
+Call Plugin.Bkgnd.KeyPress(Hwnd, 9)
+End If
+End Sub
+
+
 Sub init()
 Call startpipei()
+Call selectfunc()
 Call failback()
 Call endfight()
 Call induel()
+
 End Sub
 Call init()
 
@@ -887,3 +915,4 @@ Call init()
 //Call zuobiaoxianshi()
 
 Delay 1000
+
