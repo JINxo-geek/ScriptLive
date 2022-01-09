@@ -225,7 +225,43 @@ Sub zhizhu()
     TracePrint "找到蜘蛛" & "点击坐标" & X & Y
     End If
 End Sub
+//蜘蛛巢穴
+Sub zhizhuchao()
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "7F8678",0, 1)
+    //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
+    //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
+	Dim lihuoarray
+	lihuarray = Split(XY, "|")
+	X = Clng(lihuarray(0))
+	Y = Clng(lihuarray(1))
+    TracePrint "x,y" & X + 50 & "," & Y
+    
 
+     If X < 0 Then 
+    
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "B0BDA2", 0, 1)
+    lihuoarray = Split(XY, "|")
+    X = Clng(lihuoarray(0))
+    Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到蜘蛛巢穴4" & X & "," & Y	
+    End If
+
+
+    
+    If X > 0 Then 
+     //Call shibieren()
+    //Call Plugin.Bkgnd.MoveTo(Hwnd, X, Y)
+    TracePrint "当前x,y" & X & "and" & Y
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+    Delay 50
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+     Delay 50
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
+    Delay 50
+    TracePrint "找到蜘蛛巢穴" & "点击坐标" & X & Y
+    End If
+
+End Sub
 //;雷鸟B0BEA8 ACC1A2
 Sub leiniao()
 	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "B2C0A5",0, 1)
@@ -250,11 +286,11 @@ Sub leiniao()
    If X < 0 Then 
     
 
-    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "558AA7", 0, 1)
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "5B93B4", 0, 1)
     lihuoarray = Split(XY, "|")
     X = Clng(lihuoarray(0))
     Y = Clng(lihuoarray(1))
-    	TracePrint "没有找到雷鸟" & X & "," & Y	
+    	TracePrint "没有找到雷鸟4" & X & "," & Y	
     End If
     
     If X > 0 Then 
@@ -683,6 +719,13 @@ If X < 0 Then
     Y = Clng(lihuoarray(1))
     	TracePrint "没有找到epo3" & X & "," & Y	
     End If
+     If X < 0 Then 
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "7979C1", 0, 1)
+    lihuoarray = Split(XY, "|")
+    X = Clng(lihuoarray(0))
+    Y = Clng(lihuoarray(1))
+    	TracePrint "没有找到epo2" & X & "," & Y	
+    End If
           If X < 0 Then 
     XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "6574A4", 0, 1)
     lihuoarray = Split(XY, "|")
@@ -831,7 +874,7 @@ Sub panduanjineng()
     Call epo()
     //Call bailong()
     Delay 200
-    Call fenghuang()
+    //Call fenghuang()
     Delay 200
    Call zhaohuanhuoban()
     // Delay 200
@@ -843,6 +886,7 @@ Sub panduanjineng()
     // Delay 200
     Call shehu()
     Call leiniao()
+    Call zhizhuchao()
      Delay 200
     //Call xiaojingling()
      //Delay 200
