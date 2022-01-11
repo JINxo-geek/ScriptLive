@@ -10,16 +10,17 @@ Dim startColor
 Dim failColor
 Dim induelColor
 Dim selectColor
+Dim selectjinlin
 
-
-startColor = 2171171
+startColor = 2171172
 failColor = 7842747
-induelColor = 2695448
+induelColor = 2564119
 selectColor = 13236216
+selectjinlin = 13882799
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器-哈利10g版(64)")
 
 //HwndEx = Plugin.Window.Find(0, "雷电模拟器重点(64)")
-HwndEx = Plugin.Window.Find(0, "雷电模拟器-哈利10g版(64)")
+HwndEx = Plugin.Window.Find(0, "雷电模拟器带微信(64)")
 
 Hwnd = Plugin.Window.FindEx(HwndEx, 0, 0, 0)
 //获取句柄输出
@@ -952,6 +953,20 @@ Call Plugin.Bkgnd.KeyPress(Hwnd, 9)
 End If
 End Sub
 
+//禁林紫红本选择技能,头顶上方文字为13882799颜色
+Sub selectfuncjinlin()
+	Color5 = Plugin.BkgndColor.GetPixelColor(HwndEx,1010,85)
+  	TracePrint "是否选择技能,此时头顶文字色" & Color5
+    TracePrint "selectjinlin" & selectjinlin
+ If Color5 = selectjinlin Then 
+TracePrint "选择技能"
+ //选择第二个
+//键盘码T为84
+Call Plugin.Bkgnd.KeyPress(Hwnd, 84)
+End If
+
+End Sub
+
 
 Sub init()
 Call startpipei()
@@ -959,12 +974,13 @@ Call startpipei()
 Call failback()
 Call endfight()
 Call induel()
+Call selectfuncjinlin()
 
 End Sub
 Call init()
 
 //测试显示坐标
 //Call zuobiaoxianshi()
-
+//Call selectfuncjinlin()
 Delay 1000
 
