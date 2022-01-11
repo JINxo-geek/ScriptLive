@@ -239,11 +239,11 @@ Sub zhizhuchao()
 
      If X < 0 Then 
     
-    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "B0BDA2", 0, 1)
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "5A6C6D", 0, 1)
     lihuoarray = Split(XY, "|")
     X = Clng(lihuoarray(0))
     Y = Clng(lihuoarray(1))
-    	TracePrint "没有找到蜘蛛巢穴4" & X & "," & Y	
+    	TracePrint "没有找到蜘蛛巢穴2" & X & "," & Y	
     End If
 
 
@@ -258,7 +258,7 @@ Sub zhizhuchao()
      Delay 50
     Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     Delay 50
-    TracePrint "找到蜘蛛巢穴" & "点击坐标" & X & Y
+    TracePrint "找到蜘蛛巢穴4" & "点击坐标" & X & Y
     End If
 
 End Sub

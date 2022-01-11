@@ -1,10 +1,20 @@
 
+Hwnd = Plugin.Window.Find(0, "傲软投屏直播窗口")
 
-Hwnd = 134612
-HwndEx = 593252
+//获取句柄输出
+TracePrint "第一层句柄"& Hwnd
+//需要全屏显示的时候
+//第二层句柄一直获取失败,需要手动抓取
+
+HwndEx = 527818
+
+
+
+
 //返回按钮
 Sub back()
-	 Call Plugin.Bkgnd.LeftClick(HwndEx, 406,1043)
+	 Call Plugin.Bkgnd.LeftClick(HwndEx, 500, 1300)
+	 TracePrint "点击返回"
 End Sub
 
 Delay 1000
@@ -18,7 +28,7 @@ Sub clickkey()
 	lihuarray = Split(XY, "|")
 	X = Clng(lihuarray(0))
 	Y = Clng(lihuarray(1))
-    TracePrint "x,y" & X+50 & "," & Y
+   
     If X > 0 Then 
      //Call shibieren()
     //Call Plugin.Bkgnd.MoveTo(Hwnd, X, Y)
@@ -30,6 +40,7 @@ Sub clickkey()
     End If
     If X < 0 Then 
     	Call down
+    	 TracePrint "没有找到" & X & "," & Y
     End If
     
 End Sub
@@ -38,6 +49,7 @@ End Sub
 Sub wait()
 TracePrint "等待20S"
 	Delay 20000
+TracePrint "等待结束,返回"	
 End Sub
 
 Sub down()
@@ -53,4 +65,5 @@ Call clickkey()
 //Call back()
 End Sub
 
-Call init()
+//Call init()
+Call back()
