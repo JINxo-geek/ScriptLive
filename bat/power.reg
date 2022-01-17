@@ -1,0 +1,41 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Switch Power Plan]
+
+"Icon"="powercpl.dll"
+
+"MUIVerb"="changePower"
+
+"Position"="Top"
+
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Switch Power Plan\Shell\Balanced]
+
+"MUIVerb"="Balanced"
+
+"Icon"="powercpl.dll"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Switch Power Plan\Shell\Balanced\Command]
+
+@="powercfg.exe /S 381b4222-f694-41f0-9685-ff5bb260df2e"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Switch Power Plan\Shell\High Performance]
+
+"MUIVerb"="High"
+
+"Icon"="powercpl.dll"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Switch Power Plan\Shell\High Performance\Command]
+
+@="powercfg.exe /S 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Switch Power Plan\Shell\Power Saver]
+
+"MUIVerb"="Saver"
+
+"Icon"="powercpl.dll"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\Switch Power Plan\Shell\Power Saver\Command]
+
+@="powercfg.exe /S a1841308-3541-4fab-bc81-f71556f20b4a"
