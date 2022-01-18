@@ -8,3 +8,15 @@ Hwnd = Plugin.Window.FindEx(HwndEx, 0, 0, 0)
 TracePrint "取色句柄"& HwndEx
 TracePrint "操作句柄"& Hwnd
 
+
+//变量区
+Dim startColor
+Dim failColor
+Dim induelColor
+Dim selectColor
+
+
+startColor = 2171427
+failColor = 7842747
+induelColor = 2695448
+selectColor = 13236216
