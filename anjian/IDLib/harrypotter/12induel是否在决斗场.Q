@@ -1,4 +1,4 @@
-//判断是否在决斗场
+//12判断是否在决斗场
 Sub induel()
 	    //根据下边颜色
     	Color4 = Plugin.BkgndColor.GetPixelColor(HwndEx,250,980)

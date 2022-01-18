@@ -1,4 +1,4 @@
-
+//4识别库
 //万圣嗅嗅
 Sub panduanwanshengxiuxiu()
 	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "C3D0E0",0,1)
