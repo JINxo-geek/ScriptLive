@@ -13,6 +13,7 @@ If Color = startColor Then
 TracePrint "开始匹配"
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
+	Delay 2000
 ElseIf Colorbug = "13762559" Then
 TracePrint "此时未匹配，进入bug返回"
 //雷电模拟器自带的B返回,B的键盘码是66
