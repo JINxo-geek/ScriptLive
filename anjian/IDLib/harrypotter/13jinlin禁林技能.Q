@@ -5,6 +5,7 @@ Sub selectfuncjinlin()
     TracePrint "selectjinlin" & selectjinlin
  If Color5 = selectjinlin Then 
 TracePrint "选择技能按T"
+Delay 4000
  //选择第二个
 //键盘码T为84
 Call Plugin.Bkgnd.KeyPress(Hwnd, 84)
