@@ -5,9 +5,9 @@
 //开始匹配
 Sub startpipei()
 Color = Plugin.BkgndColor.GetPixelColor(HwndEx, 1570, 873)
-Colorbug = Plugin.BkgndColor.GetPixelColor(HwndEx, 80, 92)
+Colorbug = Plugin.BkgndColor.GetPixelColor(HwndEx, 1736,384)
 Color4 = Plugin.BkgndColor.GetPixelColor(HwndEx,250,980)
-TracePrint "设置的Colorbug取值g" & Colorbug
+TracePrint "设置的Colorbug取值" & Colorbug
 TracePrint "此时匹配位置的颜色" & Color
 TracePrint "设置的startColor取值" & startColor
 Delay 1000
@@ -16,7 +16,7 @@ TracePrint "开始匹配"
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
 	Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
 	Delay 6000
-ElseIf Colorbug = "13762559"  Then
+ElseIf Colorbug = "10997994"  Then
 TracePrint "此时未匹配，进入bug返回"
 //保险确认
 //Call Plugin.Bkgnd.LeftClick(Hwnd, 1615, 890)
@@ -24,6 +24,5 @@ Delay 1000
 //雷电模拟器自带的B返回,B的键盘码是66
 Call Plugin.Bkgnd.KeyPress(Hwnd,66)
 Delay 2000
-Call Plugin.Bkgnd.KeyPress(Hwnd,66)
-Delay 1000
 End If
+End Sub
