@@ -17,7 +17,8 @@ Dim failColor
 Dim induelColor
 Dim selectColor
 Dim selectjinlin
-
+//训练模式2171427
+//排位模式2105379
 startColor = 2171427
 failColor = 7842747
 induelColor = 2695448
