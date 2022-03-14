@@ -20,8 +20,8 @@ Dim selectjinlin
 //训练模式2171427
 //排位模式2105379
 startColor = 2171427
-failColor = 7842747
-induelColor = 2695448
+failColor = 7646139
+induelColor = 2564119
 selectColor = 13236216
 selectjinlin = 13882799
 
