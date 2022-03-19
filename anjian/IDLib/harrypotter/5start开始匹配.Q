@@ -6,7 +6,7 @@
 Sub startpipei()
 Color = Plugin.BkgndColor.GetPixelColor(HwndEx, 1570, 873)
 Colorbug = Plugin.BkgndColor.GetPixelColor(HwndEx, 1736,384)
-Color4 = Plugin.BkgndColor.GetPixelColor(HwndEx,250,980)
+
 TracePrint "设置的Colorbug取值" & Colorbug
 TracePrint "此时匹配位置的颜色" & Color
 TracePrint "设置的startColor取值" & startColor
