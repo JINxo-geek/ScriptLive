@@ -85,7 +85,7 @@ Sub zhadan()
 End Sub
 //56C5F1 3953A2 金色飞贼
 Sub panduanfeizei()
-		XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1400, 967, "485C5F",1,1)
+		XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1400, 967, "5B7383",1,1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
@@ -94,7 +94,7 @@ Sub panduanfeizei()
 	Y = Clng(lihuarray(1))
     TracePrint "x,y" & X + 50 & "," & Y
     If X < 0 Then 
-    	TracePrint "没有找到飞贼" & X & "," & Y	
+    	TracePrint "没有找到飞贼2" & X & "," & Y	
     End If
     If X < 0 Then 
     XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "3953A2", 0, 1)
@@ -105,11 +105,11 @@ Sub panduanfeizei()
     End If
     If X > 0 Then 
     TracePrint "当前x,y" & X & "and" & Y
-    Call Plugin.Bkgnd.LeftClick(Hwnd, X-50, Y)
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     Delay 50
-     Call Plugin.Bkgnd.LeftClick(Hwnd, X - 50, Y)
+     Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
       Delay 50
-         Call Plugin.Bkgnd.LeftClick(Hwnd, X-50, Y)
+         Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     
 
     TracePrint "找到飞贼" & "点击坐标" & X & Y
@@ -216,22 +216,22 @@ Sub leiniao()
     
 
      If X < 0 Then 
-    
-    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "B0BDA2", 0, 1)
+        	TracePrint "没有找到雷鸟" & X & "," & Y	
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "B0BAA2", 0, 1)
     lihuoarray = Split(XY, "|")
     X = Clng(lihuoarray(0))
     Y = Clng(lihuoarray(1))
-    	TracePrint "没有找到雷鸟" & X & "," & Y	
+
     End If
 
    If X < 0 Then 
-    
+  TracePrint "没有找到雷鸟4" & X & "," & Y	
 
     XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "5B93B4", 0, 1)
     lihuoarray = Split(XY, "|")
     X = Clng(lihuoarray(0))
     Y = Clng(lihuoarray(1))
-    	TracePrint "没有找到雷鸟4" & X & "," & Y	
+
     End If
     
     If X > 0 Then 
@@ -250,7 +250,7 @@ Sub leiniao()
 End Sub
 //3C434A 小精灵
 Sub xiaojingling()
-	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "7E523E",0,1)
+	XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "79ADC1",0,1)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 710, 775)
     //Call Plugin.Bkgnd.LeftClick(Hwnd, 1477, 976)
 	Dim lihuoarray
@@ -261,12 +261,21 @@ Sub xiaojingling()
     
 
     If X < 0 Then 
+TracePrint "没有找到小精灵1" & X & "," & Y	
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "956444", 0, 1)
+    lihuoarray = Split(XY, "|")
+    X = Clng(lihuoarray(0))
+    Y = Clng(lihuoarray(1))
+
+    End If
     
+ If X < 0 Then 
+TracePrint "没有找到小精灵4" & X & "," & Y	
     XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "81543E", 0, 1)
     lihuoarray = Split(XY, "|")
     X = Clng(lihuoarray(0))
     Y = Clng(lihuoarray(1))
-    	TracePrint "没有找到小精灵" & X & "," & Y	
+
     End If
     
     If X > 0 Then 
@@ -631,13 +640,13 @@ Sub mao()
      //Call shibieren()
     //Call Plugin.Bkgnd.MoveTo(Hwnd, X, Y)
     TracePrint "当前x,y" & X & "and" & Y
-    Call Plugin.Bkgnd.LeftClick(Hwnd, X-50, Y)
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     Delay 50
-    Call Plugin.Bkgnd.LeftClick(Hwnd, X-50, Y)
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
      Delay 50
-    Call Plugin.Bkgnd.LeftClick(Hwnd, X-50, Y)
+    Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     Delay 50
-      Call Plugin.Bkgnd.LeftClick(Hwnd, X-50, Y)
+      Call Plugin.Bkgnd.LeftClick(Hwnd, X, Y)
     TracePrint "找到猫" & "点击坐标" & X & Y
     End If
 
@@ -652,27 +661,28 @@ Sub epo()
 	maoarray = Split(XY, "|")
 	X = Clng(maoarray(0))
 	Y = Clng(maoarray(1))
-    TracePrint "x,y" & X & "," & Y
 If X < 0 Then 
-    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "403B33", 0, 1)
+TracePrint "没有找到epo3" & X & "," & Y
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "6C73B3", 0, 1)
     lihuoarray = Split(XY, "|")
     X = Clng(lihuoarray(0))
     Y = Clng(lihuoarray(1))
-    	TracePrint "没有找到epo3" & X & "," & Y	
     End If
      If X < 0 Then 
-    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "7979C1", 0, 1)
+TracePrint "没有找到epo2" & X & "," & Y	
+    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "9495E5", 0, 1)
     lihuoarray = Split(XY, "|")
     X = Clng(lihuoarray(0))
     Y = Clng(lihuoarray(1))
-    	TracePrint "没有找到epo2" & X & "," & Y	
     End If
           If X < 0 Then 
-    XY = Plugin.BkgndColor.FindColorEx(HwndEx, 710, 775, 1477, 967, "6574A4", 0, 1)
-    lihuoarray = Split(XY, "|")
-    X = Clng(lihuoarray(0))
-    Y = Clng(lihuoarray(1))
-    	TracePrint "没有找到epo1" & X & "," & Y	
+TracePrint "没有找到epo4" & X & "," & Y	
+
+    End If
+              If X < 0 Then 
+TracePrint "没有找到epo4" & X & "," & Y	
+
+
     End If
     If X > 0 Then 
      //Call shibieren()
