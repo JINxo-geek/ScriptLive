@@ -29,7 +29,7 @@
 // @exclude      *://*.lusongsong.com/*
 // @exclude      *://*.cambridge.org/*
 // @grant        GM_registerMenuCommand
-// @require      https://cdn.jsdelivr.net/npm/jquery@1/dist/jquery.min.js
+// @require      https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js
 // @note         2021-02-05-v0.2 快捷键启用
 // @note         2021-02-05-v0.1 初次发布
 // ==/UserScript==
