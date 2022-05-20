@@ -1,9 +1,25 @@
-//11滚键盘
+//11滚键盘，使用模拟器的数字触发技能
 
-Sub yidonghefangjineng()
-TracePrint "移动到位置(200,100),等待5秒"
-Call Plugin.Bkgnd.LeftClick(Hwnd, 200,100)
-Delay 5000
-//滚键盘,触发雷电模拟器录制的释放技能~
-Call Plugin.Bkgnd.KeyPress(Hwnd, 192)
+Sub gunjianpan()
+TracePrint "滚键盘"
+Call Plugin.Bkgnd.KeyPress(Hwnd, 97)
+Delay 50
+Call Plugin.Bkgnd.KeyPress(Hwnd, 97)
+Call Plugin.Bkgnd.KeyPress(Hwnd, 97)
+Delay 1000
+Call Plugin.Bkgnd.KeyPress(Hwnd, 98)
+Delay 50
+Call Plugin.Bkgnd.KeyPress(Hwnd, 98)
+Call Plugin.Bkgnd.KeyPress(Hwnd, 98)
+Delay 1000
+Call Plugin.Bkgnd.KeyPress(Hwnd, 99)
+Delay 50
+Call Plugin.Bkgnd.KeyPress(Hwnd, 99)
+Call Plugin.Bkgnd.KeyPress(Hwnd, 99)
+Delay 1000
+Call Plugin.Bkgnd.KeyPress(Hwnd, 100)
+Delay 50
+Call Plugin.Bkgnd.KeyPress(Hwnd, 100)
+Call Plugin.Bkgnd.KeyPress(Hwnd, 100)
+Delay 1000
 End Sub
